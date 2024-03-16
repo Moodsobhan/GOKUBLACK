@@ -3,7 +3,7 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "天 | 𝐀𝐒𝐈𝐅 𝐱𝟔𝟗";
+const doNotDelete = "天 | ➪𝐉𝐎𝐃𝐎✍︎𝐁𝐎𝐓𖤍";
 const prefixes = ["help2"];
 /** 
 * @author NTKhang
