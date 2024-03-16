@@ -1,0 +1,14 @@
+language ="nodejs"
+run="npm start"
+externalPort = 80
+modules = ["nodejs-20:v8-20230920-bd784b9"]
+
+[deployment]
+build = ["sh", "-c", "npm run"]
+deploymentTarget = "gce"
+run = ["sh", "-c", "npm start"]
+ignorePorts = true
+
+[[ports]]
+localPort = 3001
+externalPort = 80

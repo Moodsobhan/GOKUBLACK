@@ -1,0 +1,247 @@
+{
+  "commandBanned": {},
+  "envGlobal": {
+    "weatherApiKey": "d7e795ae6a0d44aaa8abb1a0a7ac19e4",
+    "goatbotApikey": "LiwgummnpLirNttAWpwBAudoHmEyyenV"
+  },
+  "envCommands": {
+    "daily": {
+      "rewardFirstDay": {
+        "coin": 100,
+        "exp": 10
+      }
+    },
+    "notification": {
+      "delayPerGroup": 250
+    },
+    "rank": {
+      "deltaNext": 5
+    },
+    "rankup": {
+      "deltaNext": 5
+    },
+    "appstore": {
+      "limitResult": 3
+    },
+    "dhbc": {
+      "reward": 1000
+    },
+    "botnick": {
+      "delayPerGroup": 250
+    },
+    "antiout": {
+      "deltaNext": 5
+    },
+    "spellingbee": {
+      "reward": 50
+    },
+    "qr": {},
+    "cinfo": {},
+    "notice": {
+      "delayPerGroup": 250
+    },
+    "nicknamechange": {
+      "delayPerGroup": 250
+    },
+    "qrcode": {},
+    "notification2": {
+      "delayPerGroup": 250
+    },
+    "resend": {
+      "deltaNext": 5
+    },
+    "trash": {
+      "deltaNext": 5
+    },
+    "wanted": {
+      "deltaNext": 5
+    },
+    "ad": {
+      "deltaNext": 5
+    },
+    "a": {
+      "deltaNext": 5
+    },
+    "affect": {
+      "deltaNext": 5
+    },
+    "b": {
+      "deltaNext": 5
+    },
+    "beautiful": {
+      "deltaNext": 5
+    },
+    "bed": {
+      "deltaNext": 5
+    },
+    "delete": {
+      "deltaNext": 5
+    },
+    "Heartbreaking": {
+      "deltaNext": 5
+    },
+    "he": {
+      "deltaNext": 5
+    },
+    "hea": {
+      "deltaNext": 5
+    },
+    "heat": {
+      "deltaNext": 5
+    },
+    "heartb": {
+      "deltaNext": 5
+    },
+    "heartbreakin": {
+      "deltaNext": 5
+    },
+    "heartbreaking": {
+      "deltaNext": 5
+    },
+    "Thomas": {
+      "deltaNext": 5
+    },
+    "thomas": {
+      "deltaNext": 5
+    },
+    "ta": {
+      "deltaNext": 5
+    },
+    "tatoo": {
+      "deltaNext": 5
+    },
+    "p": {
+      "deltaNext": 5
+    },
+    "pout": {
+      "deltaNext": 5
+    },
+    "poutine": {
+      "deltaNext": 5
+    },
+    "spank": {
+      "deltaNext": 5
+    },
+    "Snyder": {
+      "deltaNext": 5
+    },
+    "snyder": {
+      "deltaNext": 5
+    },
+    "Mikkelsen": {
+      "deltaNext": 5
+    },
+    "mikkelsen": {
+      "deltaNext": 5
+    },
+    "Bobross": {
+      "deltaNext": 5
+    },
+    "bobross": {
+      "deltaNext": 5
+    },
+    "Clown": {
+      "deltaNext": 5
+    },
+    "clown": {
+      "deltaNext": 5
+    },
+    "NotStonk": {
+      "deltaNext": 5
+    },
+    "notStonk": {
+      "deltaNext": 5
+    },
+    "notstonk": {
+      "deltaNext": 5
+    },
+    "nn": {
+      "deltaNext": 5
+    },
+    "mms": {
+      "deltaNext": 5
+    },
+    "Karaba": {
+      "deltaNext": 5
+    },
+    "karaba": {
+      "deltaNext": 5
+    },
+    "Hitler": {
+      "deltaNext": 5
+    },
+    "hitler": {
+      "deltaNext": 5
+    },
+    "d": {
+      "deltaNext": 5
+    },
+    "dcbl": {
+      "deltaNext": 5
+    },
+    "dcblu": {
+      "deltaNext": 5
+    },
+    "dcblue": {
+      "deltaNext": 5
+    },
+    "dcblack": {
+      "deltaNext": 5
+    },
+    "Facepalm": {
+      "deltaNext": 5
+    },
+    "facepalm": {
+      "deltaNext": 5
+    },
+    "Deepfry": {
+      "deltaNext": 5
+    },
+    "deepfry": {
+      "deltaNext": 5
+    },
+    "confuse": {
+      "deltaNext": 5
+    },
+    "confused": {
+      "deltaNext": 5
+    },
+    "r": {
+      "deltaNext": 5
+    },
+    "remove": {
+      "deltaNext": 5
+    },
+    "deleting": {
+      "deltaNext": 5
+    },
+    "ti": {
+      "deltaNext": 5
+    },
+    "tinyurl": {
+      "deltaNext": 5
+    },
+    "aki": {
+      "reward": 25
+    }
+  },
+  "envEvents": {
+    "logsbot": {
+      "allow": true
+    }
+  },
+  "commandUnload": [
+    "metaimg.js",
+    "goibot.js",
+    "0ai.js",
+    "000ai.js",
+    "ai3.js",
+    "ai4.js",
+    "e.js",
+    "autolink.js",
+    "0.js",
+    "00ai.js",
+    "gpt.js",
+    "prefix2.js"
+  ]
+}
