@@ -44,7 +44,7 @@ module.exports = {
     const authorName = global.GoatBot.config.authorName;
     const authorFB = global.GoatBot.config.authorFB;
     const authorInsta = "4s1f_x69";
-    const status = "in a relationship with https://www.facebook.com/100086971370548";
+    const status = "I HATE LOVE🙂";
     const timeStart = Date.now();
 
     const urls = JSON.parse(fs.readFileSync('scripts/cmds/assets/info.json'));
