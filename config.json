@@ -34,8 +34,8 @@
     "enable": false,
     "ignoreCommand": []
   },
-  "authorName": "𝐀𝐒𝐈𝐅 𝐱𝟔𝟗",
-  "authorFB": "https://www.facebook.com/4S1F.403",
+  "authorName": "➪𝐌𝐀𝐇𝐈 𝐊𝐇𝐀𝐍𖤍",
+  "authorFB": "https://www.facebook.com/profile.php?id=61556779347707",
   "vipUser": [
     "100044327656712",
     "100083900196039",
@@ -47,11 +47,11 @@
     "100087271775565"
   ],
   "adminBot": [
-    "100083900196039",
-    "100095251515413",
-    "100044327656712",
-    "100073291639820",
-    "61553911885529"
+    "61556779347707",
+    "",
+    "",
+    "",
+    ""
   ],
   "GOD": [
     "100083900196039",
@@ -73,7 +73,7 @@
     "notes": "if you enable this feature, only the thread in the whiteListThreadIds list can use the bot",
     "how_it_work": "if you enable both whiteListMode and whiteListModeThread, the system will check if the user is in whiteListIds, then check if the thread is in whiteListThreadIds, if one of the conditions is true, the user can use the bot"
   },
-  "nickNameBot": "𝐀𝐒𝐈𝐅 𝐱𝟔𝟗",
+  "nickNameBot": "➪𝐉𝐎𝐃𝐎✍︎𝐁𝐎𝐓𖤍",
   "prefix": ".",
   "database": {
     "type": "json",
@@ -182,7 +182,7 @@
     "updatePresence": true,
     "listenTyping": true,
     "logLevel": "error",
-    "selfListen": false,
+    "selfListen": true,
     "selfListenEvent": true,
     "autoMarkDelivery": true,
     "autoReconnect": true,
