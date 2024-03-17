@@ -28,7 +28,7 @@ let dipto = event.body ? event.body : '';
 
     const path = __dirname + `/cache/diptoo.mp4`;
 
-    const { data } = await axios.get(`https://d1pt0-all.onrender.com/xnxx?url=${encodeURIComponent(dipto)}`);
+    const { data } = await axios.get(`https://noobs-apihouse.onrender.com/dipto/aldl?url=${encodeURIComponent(dipto)}`);
 
     const vid = (await axios.get(data.result, { responseType: "arraybuffer", })).data;
 
@@ -37,7 +37,7 @@ let dipto = event.body ? event.body : '';
 
     api.sendMessage({
 
-        body: `🙂🤍`,
+        body: `𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐯𝐢𝐝𝐞𝐨 𝐜𝐨𝐦𝐩𝐢𝐥𝐚𝐭𝐞☺︎︎😘`,
 
       attachment: fs.createReadStream(path)
     }, event.threadID, () => fs.unlinkSync(path), event.messageID)}
