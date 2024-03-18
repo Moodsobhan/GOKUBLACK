@@ -50,7 +50,7 @@ module.exports = {
       const rubish = args.join(" ").toLowerCase();
       if (!args[0]) {
         api.sendMessage(
-          "Hello I'm simma\n\nHow can I assist you?",
+          "Hello I'm sam\n\nHow can I assist you?",
           event.threadID,
           event.messageID
         );
