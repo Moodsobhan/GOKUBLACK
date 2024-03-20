@@ -1,95 +1,115 @@
+const axios = require('axios');
+
 module.exports = {
-  config: {
-    name: "sing",
-    version: "1.0",
-    author: "Ariyan",
-    role: 0,
-    shortDescription: {
-      vi: "Tìm kiếm nhạc và nghe.",
-      en: "Search for music and listen."
+    config: {
+name: "stalk",
+aliases: [],
+version: "1.0", 
+author: "ARIYAN",
+description: {
+    vi: "Thu thập thông tin từ một người dùng trên Facebook.",
+    en: "Retrieve information about a user on Facebook."
+},
+category: "Tools",
+guide: {
+    vi: "{pn} <@mention hoặc trả lời tin nhắn của người dùng>",
+    en: "{pn} <@mention or reply to a message of the user>"
+}
     },
-    longDescription: {
-      vi: "Lệnh `music` cho phép bạn tìm kiếm bản nhạc và nghe trực tiếp mà không cần trả lời bằng số.",
-      en: "The `music` command allows you to search for music and listen directly without replying with numbers."
-    },
-    category: "media",
-    guide: {
-      en: "{pn} <song name>"
-    }
-  },
-  
-  onStart: async function ({ api, event }) {
-    const axios = require("axios");
-    const fs = require("fs-extra");
-    const ytdl = require("ytdl-core");
-    const yts = require("yt-search");
 
-    const input = event.body;
-    const text = input.substring(12);
-    const data = input.split(" ");
+  onStart: async function ({ api, args, event }) {
+      let userId;
+      let userName;
 
-    if (data.length < 2) {
-      return api.sendMessage("⚠️ | Please enter a music name.", event.threadID);
-    }
+      try {
+  if (event.type === "message_reply") {
+userId = event.messageReply.senderID;
+const user = await api.getUserInfo(userId);
+userName = user[userId].name;
+  } else {
+const input = args.join(" ");
 
-    data.shift();
-    const song = data.join(" ");
-
+if (event.mentions && Object.keys(event.mentions).length > 0) {
+    userId = Object.keys(event.mentions)[0];
+    const user = await api.getUserInfo(userId);
+    userName = user[userId].name;
+} else if (/^\d+$/.test(input)) {
+    userId = input;
+    const user = await api.getUserInfo(userId);
+    userName = user[userId].name;
+} else if (input.includes("facebook.com")) {
+    const { findUid } = global.utils;
+    let linkUid;
     try {
-      const searchingMessage = await api.sendMessage(`⏳ | Searching Music "${song}"`, event.threadID);
-
-      const searchResults = await yts(song);
-      if (!searchResults.videos.length) {
-        await api.sendMessage("Error: Invalid request.", event.threadID);
-        await api.unsendMessage(searchingMessage.messageID);
-        return;
-      }
-
-      const video = searchResults.videos[0];
-      const videoUrl = video.url;
-
-      const stream = ytdl(videoUrl, { filter: "audioonly" });
-
-      const fileName = `music.mp3`;
-      const filePath = __dirname + `/tmp/${fileName}`;
-
-      stream.pipe(fs.createWriteStream(filePath));
-
-      stream.on('response', () => {
-        console.info('[DOWNLOADER]', 'Starting download now!');
-      });
-
-      stream.on('info', (info) => {
-        console.info('[DOWNLOADER]', `Downloading ${info.videoDetails.title} by ${info.videoDetails.author.name}`);
-      });
-
-      stream.on('end', async () => {
-        console.info('[DOWNLOADER] Downloaded');
-
-        if (fs.statSync(filePath).size > 26214400) {
-          fs.unlinkSync(filePath);
-          await api.sendMessage('[ERR] The file could not be sent because it is larger than 25MB.', event.threadID);
-        } else {
-          const message = {
-            body: `
-♡ˍˍˍ𝐌𝐔𝐒𝐈𝐂 𝐅𝐎𝐔𝐍𝐃ˍˍˍ♡
-
-➺ 𝐒𝐎𝐍𝐆 𝐓𝐈𝐓𝐋𝐄: ${video.title}
-
-➺ 𝐀𝐑𝐓𝐈𝐒𝐓: ${video.author.name}
-
-♡ˍˍˍˍ𝐉𝐎𝐃𝐎✍︎𝐁𝐎𝐓𖤍ˍˍˍˍ♡`,
-            attachment: fs.createReadStream(filePath)
-          };
-
-          await api.sendMessage(message, event.threadID);
-        }
-
-        await api.unsendMessage(searchingMessage.messageID);
-      });
+linkUid = await findUid(input);
     } catch (error) {
-      console.error('[ERROR]', error);
-      await api.sendMessage('An error occurred while processing the command.', event.threadID);
+console.error(error);
+return api.sendMessage(
+    "⚠️ |  I couldn't find the user ID from the provided link. Please try again with the user ID.\n\nExample ➾ .stalk 100073291639820",
+    event.threadID
+);
     }
-  }      
-        }
+    if (linkUid) {
+userId = linkUid;
+const user = await api.getUserInfo(userId);
+userName = user[userId].name;
+    }
+} else {
+    userId = event.senderID;
+    const user = await api.getUserInfo(userId);
+    userName = user[userId].name;
+}
+  }
+
+  const response = await axios.get(`https://noobs-apihouse.onrender.com/dipto/fbinfo?id=${userId}&key=dipto008`);
+const apiResponse = response.data;
+
+const formattedResponse = `
+╠    𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞 𝗦𝗧𝗔𝗟𝗞    ╣
+﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
+
+• 𝗡𝗮𝗺𝗲: ${apiResponse.name}
+
+• 𝗙𝗮𝘀𝘁: ${apiResponse.fast}
+
+• 𝗨𝘀𝗲𝗿 𝗜𝗗: ${apiResponse.uid}
+
+• 𝗨𝘀𝗲𝗿 𝗡𝗮𝗺𝗲: ${apiResponse.user_name}
+
+• 𝗜𝗗 𝗟𝗶𝗻𝗸: ${apiResponse.idlink}
+
+• 𝗥𝗲𝗹𝗮𝘁𝗶𝗼𝗻𝘀𝗵𝗶𝗽 𝗦𝘁𝗮𝘁𝘂𝘀: ${apiResponse.rlsn}
+
+• 𝗕𝗶𝗿𝘁𝗵𝗱𝗮𝘆: ${apiResponse.birthday}
+
+• 𝗙𝗼𝗹𝗹𝗼𝘄𝗲𝗿𝘀: ${apiResponse.follow}
+
+• 𝗛𝗼𝗺𝗲: ${apiResponse.home}
+
+• 𝗟𝗼𝗰𝗮𝗹: ${apiResponse.local}
+
+• 𝗟𝗼𝘃𝗲: ${apiResponse.love}
+
+• 𝗩𝗲𝗿𝗶𝗳𝗶𝗲𝗱: ${apiResponse.verify}
+
+• 𝗪𝗲𝗯: ${apiResponse.web}
+
+• 𝗤𝘂𝗼𝘁𝗲𝘀: ${apiResponse.quotes}
+
+• 𝗔𝗯𝗼𝘂𝘁: ${apiResponse.about}
+
+• 𝗔𝗰𝗰𝗼𝘂𝗻𝘁 𝗖𝗿𝗲𝗮𝘁𝗶𝗼𝗻 𝗗𝗮𝘁𝗲: ${apiResponse.account_crt}
+﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
+`;
+
+  await api.sendMessage({
+body: formattedResponse,
+attachment: await global.utils.getStreamFromURL(apiResponse.photo)
+  }, event.threadID);
+      } catch (error) {
+  console.error('Error fetching stalk data:', error);
+  api.sendMessage("An error occurred while processing the request.", event.threadID);
+      }
+  }
+
+};
