@@ -1,14 +1,12 @@
 const fs = require('fs');
 const moment = require('moment-timezone');
-const NepaliDate = require('nepali-date');
-const fast = require('fast-speedtest-api');
 
 module.exports = {
   config: {
-    name: "cinfo",
-    aliases: ['info', 'ownerinfo'],
-    version: "1.3",
-    author: "AceGun",
+    name: "info",
+    aliases: ["admininfo", "owner"],
+    version: "2.0",
+    author: "RUBISH",
     countDown: 5,
     role: 0,
     shortDescription: {
@@ -19,93 +17,72 @@ module.exports = {
       vi: "",
       en: "Sends information about the bot and admin along with an image."
     },
-    category: "info",
+    category: "Information",
     guide: {
       en: "{pn}"
     },
     envConfig: {}
   },
 
-  onStart: async function ({ message, api, event, usersData, threadsData }) {
-    const allUsers = await usersData.getAll();
-    const allThreads = await threadsData.getAll();
-    const speedTest = new fast({
-        token: "YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm",
-        verbose: false,
-        timeout: 10000,
-        https: true,
-        urlCount: 5,
-        bufferSize: 8,
-        unit: fast.UNITS.Mbps
-      });
-    const result = await speedTest.getSpeed();
-    const botName = global.GoatBot.config.nickNameBot;
-    const botPrefix = global.GoatBot.config.prefix;
-    const authorName = global.GoatBot.config.authorName;
-    const authorFB = global.GoatBot.config.authorFB;
-    const authorInsta = "4s1f_x69";
-    const status = "I HATE LOVE🙂";
-    const timeStart = Date.now();
+  onStart: async function ({ message }) {
+    this.sendInfo(message);
+  },
+
+  onChat: async function ({ event, message }) {
+    if (event.body && event.body.toLowerCase() === "info") {
+      this.sendInfo(message);
+    }
+  },
+
+  sendInfo: async function (message) {
+    const botName = "➪𝐉𝐎𝐃𝐎✍︎𝐁𝐎𝐓𖤍";
+    const botPrefix = ".";
+    const authorName = "𝐀𝐑𝐈𝐘𝐀𝐍";
+    const authorFB = "https://www.facebook.com/profile.php?id=61556779347707";
+    const authorInsta = "secret";
+    const status = "Pure single";
 
     const urls = JSON.parse(fs.readFileSync('scripts/cmds/assets/info.json'));
     const link = urls[Math.floor(Math.random() * urls.length)];
 
-    // Get current date and time in Asia/Kathmandu timezone
     const now = moment().tz('Asia/Dhaka');
-    const date = now.format('MMMM DD YYYY');
+    const date = now.format('MMMM Do YYYY');
     const time = now.format('h:mm:ss A');
 
-    // Get Nepali date
-    const nepaliDate = new NepaliDate(now.toDate());
-    const bsDateStr = nepaliDate.format("dddd, DD MMMM");
-
-    // Calculate bot uptime
     const uptime = process.uptime();
-    const uptimeString = formatUptime(uptime);
+    const seconds = Math.floor(uptime % 60);
+    const minutes = Math.floor((uptime / 60) % 60);
+    const hours = Math.floor((uptime / (60 * 60)) % 24);
+    const days = Math.floor(uptime / (60 * 60 * 24));
+    const uptimeString = `${hours}h ${minutes}m ${seconds}sec`;
 
-    const ping = Date.now() - timeStart;
-
-    const replyMessage = `===「 Bot & Owner Info 」===
-❏ Bot Name: ${botName}
-❏ Bot Prefix: ${botPrefix}
-❏ Author Name: ${authorName}
-❏ FB: ${authorFB}
-❏ Instagram: ${authorInsta}
-❏ Status: ${status}
-❏ Date: ${date}
-❏ BS Date: ${bsDateStr}
-❏ Total Threads: ${allThreads.length}
-❏ Total Users: ${allUsers.length}
-❏ Time: ${time}
-❏ Bot Running: ${uptimeString}
-❏ Bot's Speed: ${result} MBPS
-=====================`;
-
-    const attachment = await global.utils.getStreamFromURL(link);
     message.reply({
-      body: replyMessage,
-      attachment
-    });
-  },
+      body: `
+≡≡║Bot & Owner Info║≡≡
+﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
 
-  onChat: async function({ event, message, getLang }) {
-    if (event.body && event.body.toLowerCase() === "info") {
-      await this.onStart({ message });
-    }
+➠Bot Name↠ ${botName}
+
+➠Bot Prefix↠ ${botPrefix}
+
+➠Owner Name↠ ${authorName}
+
+➠Facebook↠ ${authorFB}
+
+➠Instagram↠ ${authorInsta}
+
+➠Status↠ ${status}
+
+➠Date↠ ${date}
+
+➠Time↠ ${time}
+
+➠Uptime↠ ${uptimeString}
+
+﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋
+Thanks for using ↠ \${botName}
+﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏`,
+      attachment: await global.utils.getStreamFromURL(link)
+    });
   }
 };
-
-function formatUptime(uptime) {
-  const seconds = Math.floor(uptime % 60);
-  const minutes = Math.floor((uptime / 60) % 60);
-  const hours = Math.floor((uptime / (60 * 60)) % 24);
-  const days = Math.floor(uptime / (60 * 60 * 24));
-
-  const uptimeString = [];
-  if (days > 0) uptimeString.push(`${days}d`);
-  if (hours > 0) uptimeString.push(`${hours}h`);
-  if (minutes > 0) uptimeString.push(`${minutes}min`);
-  if (seconds > 0) uptimeString.push(`${seconds}sec`);
-
-  return uptimeString.join(" ");
-}
