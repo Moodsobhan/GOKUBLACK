@@ -4,9 +4,9 @@ const moment = require('moment-timezone');
 module.exports = {
   config: {
     name: "info",
-    aliases: ["admininfo", "owner"],
+    aliases: ["admin", "owner"],
     version: "2.0",
-    author: "RUBISH",
+    author: "ARIYAN",
     countDown: 5,
     role: 0,
     shortDescription: {
@@ -80,7 +80,7 @@ module.exports = {
 ➠Uptime↠ ${uptimeString}
 
 ﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋
-Thanks for using ↠ \${botName}
+Thanks for using ↠ \➪𝐉𝐎𝐃𝐎✍︎𝐁𝐎𝐓𖤍
 ﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏`,
       attachment: await global.utils.getStreamFromURL(link)
     });
