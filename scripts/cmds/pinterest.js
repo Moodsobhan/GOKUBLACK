@@ -7,7 +7,7 @@ const request = require("request");
  
 module.exports = {
   config: {
-    name: "pin",
+    name: "pic",
     aliases: ["pinterest"],
     version: "1.0",
     author: "𝐀𝐒𝐈𝐅 𝐱𝟔𝟗",
