@@ -1,40 +1,46 @@
-const axios = require("axios");
+const axios = require('axios');
+const fs = require('fs');
 
 module.exports = {
- config: {
- name: "art",
- role: 0,
- author: "MR.AYAN",
- countDown: 5,
- longDescription: "Art images",
- category: "AI",
- guide: {
- en: "${pn} reply to an image with a prompt and choose model 1 - 52"
- }
- },
- onStart: async function ({ message, api, args, event }) {
- const text = args.join(' ');
- 
- if (!event.messageReply || !event.messageReply.attachments || !event.messageReply.attachments[0]) {
- return message.reply("Image URL is missing.");
- }
-
- const imgurl = encodeURIComponent(event.messageReply.attachments[0].url);
-
- const [prompt, model] = text.split('|').map((text) => text.trim());
- const puti = model || "37";
- 
- api.setMessageReaction("⏳", event.messageID, () => {}, true);
- const lado = `https://sandyapi.otinxsandeep.repl.co/art?imgurl=${imgurl}&prompt=${encodeURIComponent(prompt)}&model=${puti}`;
-
- message.reply("✅| Generating please wait.", async (err, info) => {
- const attachment = await global.utils.getStreamFromURL(lado);
- message.reply({
- attachment: attachment
- });
- let ui = info.messageID; 
- message.unsend(ui);
- api.setMessageReaction("✅", event.messageID, () => {}, true);
- });
- }
+  config: {
+    name: "art",
+    version: "1.0",
+    author: "MR.AYAN", //nihan
+    countDown: 5,
+    role: 0,
+    shortDescription: {
+      en: ""
+    },
+    longDescription: {
+      en: "al"
+    },
+    category: "system",
+  },
+  
+  onStart: async function ({ api, event, args }) {
+    const { threadID, messageID } = event;
+    if (event.type == "message_reply") {
+      var t = event.messageReply.attachments[0].url;
+    } else {
+      var t = args.join(" ");
+    }
+    try {
+      api.sendMessage("Generating...", threadID, messageID);
+      const r = await axios.get("https://free-api.ainz-sama101.repl.co/canvas/toanime?", {
+        params: {
+          url: encodeURI(t)
+        }
+      });
+      const result = r.data.result.image_data;
+      let ly = __dirname + "/cache/anime.png";
+      let ly1 = (await axios.get(result, {
+        responseType: "arraybuffer"
+      })).data;
+      fs.writeFileSync(ly, Buffer.from(ly1, "utf-8"));
+      return api.sendMessage({ attachment: fs.createReadStream(ly) }, threadID, () => fs.unlinkSync(ly), messageID);
+    } catch (e) {
+      console.log(e.message);
+      return api.sendMessage("Something went wrong: " + e.message, threadID, messageID);
+    }
+  }
 }; 
