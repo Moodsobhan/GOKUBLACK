@@ -4,9 +4,9 @@ const moment = require('moment-timezone');
 module.exports = {
   config: {
     name: "info",
-    aliases: ["admin", "owner"],
+    aliases: ["inf", "owner"],
     version: "2.0",
-    author: "RUBISH",
+    author: "MR.AYAN",
     countDown: 5,
     role: 0,
     shortDescription: {
@@ -35,10 +35,10 @@ module.exports = {
   },
 
   sendInfo: async function (message) {
-    const botName = "➪𝐉𝐎𝐃𝐎✍︎𝐁𝐎𝐓𖤍";
+    const botName = "【.】• ➠ 𝘼𝙔𝘼𝙉 ➠𝙍𝙊𝘽𝙊𝙏";
     const botPrefix = ".";
-    const authorName = "𝐀𝐑𝐈𝐘𝐀𝐍";
-    const authorFB = "https://www.facebook.com/profile.php?id=61556779347707";
+    const authorName = "𝐌𝐑.𝐀𝐘𝐀𝐍";
+    const authorFB = "https://m.me/MR.AYAN.2X";
     const authorInsta = "secret";
     const status = "Pure single";
 
@@ -80,7 +80,7 @@ module.exports = {
 ➠Uptime↠ ${uptimeString}
 
 ﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋
-Thanks for using ↠ \➪𝐉𝐎𝐃𝐎✍︎𝐁𝐎𝐓𖤍
+Thanks for using ↠ \➪${botName}
 ﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏`,
       attachment: await global.utils.getStreamFromURL(link)
     });
