@@ -3,7 +3,7 @@ module.exports = {
     name: "girl",
     aliases: ["girls"],
     version: "1.0",
-    author: "Samir B. Thakuri",
+    author: "MR.AYAN",
     countDown: 5,
     role: 0,
     shortDescription: "send you random girls pic",
@@ -33,4 +33,4 @@ module.exports = {
       attachment: await global.utils.getStreamFromURL(img)
     });
   }
-};
+}; 
