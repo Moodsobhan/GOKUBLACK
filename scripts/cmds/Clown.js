@@ -5,7 +5,7 @@ module.exports = {
   config: {
     name: "clown",
     version: "1.0",
-    author: "𝐀𝐒𝐈𝐅 𝐱𝟔𝟗",
+    author: "MR.AYAN",
     countDown: 1,
     role: 0,
     shortDescription: "Clown Image!",
