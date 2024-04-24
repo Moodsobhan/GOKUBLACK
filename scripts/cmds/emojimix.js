@@ -4,7 +4,7 @@ module.exports = {
 	config: {
 		name: "emojimix",
 		version: "1.4",
-		author: "NTKhang",
+		author: "MR.AYAN",
 		countDown: 5,
 		role: 0,
 		description: {
@@ -74,4 +74,4 @@ async function generateEmojimix(emoji1, emoji2) {
 	catch (e) {
 		return null;
 	}
-}
+} 
