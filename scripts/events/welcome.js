@@ -26,7 +26,7 @@ module.exports = {
 			session2: "noon",
 			session3: "afternoon",
 			session4: "evening",
-			welcomeMessage: "⚪⚫🟡🟢🔴🔵\n\n{boxName}\n\n🤖 Thank you for inviting me! 🌟\n \n🚀 Let's get started! Here's some useful information:\n \n- Bot Prefix: %1\n \n- To discover the list of available commands, type: %1help\n \n📚 Need assistance or have questions? Feel free to reach out anytime. Enjoy your time in the group! 🌈✨",
+			welcomeMessage: "⚪⚫🟡🟢🔴🔵\n\n🤖 Thank you for inviting me! 🌟\n \n🚀 Let's get started! Here's some useful information:\n \n- Bot Prefix: %1\n \n- To discover the list of available commands, type: %1help\n \n📚 Need assistance or have questions? Feel free to reach out anytime. Enjoy your time in the group! 🌈✨",
 			multiple1: "you",
 			multiple2: "you guys",
 			defaultWelcomeMessage: `𝐖𝐄𝐋𝐂𝐎𝐌𝐄 𝐓𝐎 𝐎𝐔𝐑 𝐆𝐑𝐎𝐔𝐏
@@ -39,7 +39,7 @@ Dear {userName}
 
 𝐈 𝐡𝐨𝐩𝐞 𝐲𝐨𝐮 𝐰𝐢𝐥𝐥 𝐅𝐨𝐥𝐥𝐨𝐰 𝐨𝐮𝐫 𝐠𝐫𝐨𝐮𝐩 𝐫𝐮𝐥𝐞𝐬 𝐩𝐫𝐨𝐩𝐞𝐫𝐥𝐲
 
-𝐇𝐚𝐯𝐞 𝐚 𝐧𝐢𝐜𝐞 𝐦𝐨𝐫𝐧𝐢𝐧𝐠  😊`
+𝐇𝐚𝐯𝐞 𝐚 𝐧𝐢𝐜𝐞 𝐦𝐨𝐫𝐧𝐢𝐧𝐠  😺`
 		}
 	},
 
