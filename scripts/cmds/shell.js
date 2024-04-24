@@ -1,47 +1,43 @@
-const { exec } = require('child_process');
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
 
 module.exports = {
   config: {
-    name: "shell",
-    version: "1.0",
-    author: "Samir",
-    countDown: 5,
-    role: 0,
-    shortDescription: "Execute shell commands",
-    longDescription: "",
-    category: "shell",
+    name: 'shell',
+    aliases: ['$','×'],
+    version: '1.0',
+    author: 'MR.AYAN',
+    role: 2,
+    category: 'utility',
+    shortDescription: {
+      en: 'Executes terminal commands.',
+    },
+    longDescription: {
+      en: 'Executes terminal commands and returns the output.',
+    },
     guide: {
-      vi: "{p}{n} <command>",
-      en: "{p}{n} <command>"
-    }
+      en: '{pn} [command]',
+    },
   },
-
-  onStart: async function ({ event, args, message }) {
-    const fuck = args.join(' ');
-    const permission = global.GoatBot.config.GOD;
-    if (!permission.includes(event.senderID)) {
-      api.sendMessage(fuck, event.threadID, event.messageID);
+  onStart: async function ({ api, args, message, event }) {
+    if (args.length === 0) {
+      message.reply('Usage: {pn} [command]');
       return;
     }
-    const command = args.join(" ");
 
-    if (!command) {
-      return message.reply("Please provide a command to execute.");
-    }
+    const command = args.join(' ');
 
-    exec(command, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error executing command: ${error}`);
-        return message.reply(`An error occurred while executing the command: ${error.message}`);
-      }
+    try {
+      const { stdout, stderr } = await exec(command);
 
       if (stderr) {
-        console.error(`Command execution resulted in an error: ${stderr}`);
-        return message.reply(`Command execution resulted in an error: ${stderr}`);
+        message.send(`${stderr}`);
+      } else {
+        message.send(`${stdout}`);
       }
-
-      console.log(`Command executed successfully:\n${stdout}`);
-      message.reply(`Command executed successfully:\n${stdout}`);
-    });
-  }
-};
+    } catch (error) {
+      console.error(error);
+      message.reply(`Error: ${error.message}`);
+    }
+  },
+}; 
