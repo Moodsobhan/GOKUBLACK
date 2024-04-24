@@ -1,39 +1,46 @@
 const DIG = require("discord-image-generation");
 const fs = require("fs-extra");
 
-module.exports = {
-	config: {
-		name: "kiss",
-		version: "1.1",
-		author: "MR.AYAN",
-		countDown: 5,
-		role: 0,
-		shortDescription: "kiss",
-		longDescription: "kiss",
-		category: "love",
-		guide: {
-			en: "{pn} @tag"
-		}
-	},
-  langs: {
-    en: {
-      noTag: "Please tag someone to kiss"
-    }
-  },
 
-onStart: async function ({ event, message, usersData, args, getLang }) {
-		const uid1 = event.senderID;
-		const uid2 = Object.keys(event.mentions)[0];
-		if (!uid2)
-			return message.reply(getLang("noTag"));
-		const avatarURL1 = await usersData.getAvatarUrl(uid1);
-		const avatarURL2 = await usersData.getAvatarUrl(uid2);
-	const img = await new DIG.Kiss().getImage(avatarURL1, avatarURL2);
-		const pathSave = `${__dirname}/tmp/${uid1}_${uid2}Kiss.png`;
+module.exports = {
+		config: {
+				name: "kiss",
+				aliases: ["kiss"],
+				version: "1.0",
+				author: "MR.AYAN",
+				countDown: 5,
+				role: 0,
+				shortDescription: "KISS",
+				longDescription: "",
+				category: "funny",
+				guide: "{pn}"
+		},
+
+
+
+		onStart: async function ({ api, message, event, args, usersData }) {
+			let one, two;
+				const mention = Object.keys(event.mentions);
+			if(mention.length == 0) return message.reply("Please mention someone");
+else if(mention.length == 1){
+ one = event.senderID
+	 two = mention[0];
+
+} else{
+ one = mention[1]
+	 two = mention[0];
+
+}
+
+
+				const avatarURL1 = await usersData.getAvatarUrl(one);
+		const avatarURL2 = await usersData.getAvatarUrl(two);
+		const img = await new DIG.Kiss().getImage(avatarURL1, avatarURL2);
+		const pathSave = `${__dirname}/tmp/${one}_${two}kiss.png`;
 		fs.writeFileSync(pathSave, Buffer.from(img));
-		const content = args.join(' ').replace(Object.keys(event.mentions)[0], "");
+		const content = "😘😘"
 		message.reply({
-			body: `${(content || "ummmah😘😘")}`,
+			body: `${(content || "Bópppp 😵‍💫😵")}`,
 			attachment: fs.createReadStream(pathSave)
 		}, () => fs.unlinkSync(pathSave));
 	}
