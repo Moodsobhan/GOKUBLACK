@@ -3,7 +3,7 @@ const axios = require('axios');
 module.exports = {
   config: {
     name: "baby",
-    aliases: ["baby", "bby", "sam" ],
+    aliases: ["simma", "bby", "sam" ],
     version: "6.9.0",
     author: "MR.AYAN",
     countDown: 0,
@@ -16,7 +16,7 @@ module.exports = {
     }
   },
 onStart: async ({ api, event, args }) => {
-const link = "https://noobs-api.onrender.com /dipto/baby";
+const link = "https://api.simsimi.vn/v1/simtalk";
   const dipto = args.join(" ").toLowerCase();
       const uid = event.senderID;
       let command;
