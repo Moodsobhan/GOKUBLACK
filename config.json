@@ -37,7 +37,7 @@
   "authorName": "MR.AYAN.2X",
   "authorFB": "https://m.me/MR.AYAN.2X",
   "vipUser": [
-    "100044327656712",
+    "61558522534273",
     "100083900196039",
     "100095251515413",
     "100084942163710",
@@ -58,7 +58,7 @@
     "61553911885529"
   ],
   "DEV": [
-    "100083900196039",
+    "61558522534273",
     "100095251515413",
     "100073291639820"
   ],
@@ -73,7 +73,7 @@
     "notes": "if you enable this feature, only the thread in the whiteListThreadIds list can use the bot",
     "how_it_work": "if you enable both whiteListMode and whiteListModeThread, the system will check if the user is in whiteListIds, then check if the thread is in whiteListThreadIds, if one of the conditions is true, the user can use the bot"
   },
-  "nickNameBot": "➪𝐉𝐎𝐃𝐎✍︎𝐁𝐎𝐓𖤍",
+  "nickNameBot": "☞︎︎︎ ♕︎𝘼𝙔𝘼𝙉-𝙍𝙊𝘽𝙊𝙏♕︎ シ︎",
   "prefix": ".",
   "database": {
     "type": "json",
