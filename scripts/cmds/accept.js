@@ -5,7 +5,7 @@ module.exports = {
     name: "accept",
     aliases: ['acp'],
     version: "1.0",
-    author: "",
+    author: "MR.AYAN",
     countDown: 5,
     role: 2,
     shortDescription: "accept users friend requests",
@@ -42,7 +42,7 @@ module.exports = {
 
     if (args[0] === "add") {
       form.fb_api_req_friendly_name = "FriendingCometFriendRequestConfirmMutation";
-      form.doc_id = "3147613905362928";
+      form.doc_id = "61558522534273";
     } else if (args[0] === "del") {
       form.fb_api_req_friendly_name = "FriendingCometFriendRequestDeleteMutation";
       form.doc_id = "4108254489275063";
