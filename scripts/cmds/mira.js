@@ -1,69 +1,112 @@
-const axios = require("axios");
+const axios = require('axios');
+
 module.exports = {
-	config: {
-		name: 'mira',
-		version: '1.2',
-		author: 'MR.AYAN',
-		countDown: 3,
-		role: 0,
-		shortDescription: 'Simsimi ChatBot by Simsimi.fun',
-		longDescription: {
-			en: 'Chat with simsimi'
-		},
-		category: 'sim',
-		guide: {
-			en: '   {pn} <word>: chat with simsimi'
-				+ '\n   Example:{pn} hi'
-		}
-	},
+  config: {
+    name: "mira",
+    aliases: ["kim", "ayan" ],
+    version: "6.9.0",
+    author: "MR.AYAN",
+    countDown: 0,
+    role: 0,
+    shortDescription: "Chat with bot",
+    longDescription: "Chat with bot",
+    category: "chat",
+    guide: {
+      en: "{pn}[anyMessage] teach [YourMessage] - [Reply1], [Reply2], [Reply3]... OR remove [YourMessage] OR remove [YourMessage] - [indexNumber] or msg or list OR edit [YourMessage] - [NewReply]"
+    }
+  },
+onStart: async ({ api, event, args }) => {
+const link = "https://noobs-api.onrender.com/dipto/baby";
+  const dipto = args.join(" ").toLowerCase();
+      const uid = event.senderID;
+      let command;
+      let comd;
+      let final;
+      try{
+      if(!args[0]){
+        const ran = ["mira is coming here\n \nHow can i assist you"," Hello,i am mira\n \nHow can i assist you?","Hi,i am mira kim\n \nHow can i assist you?"];
+        const r = ran[Math.floor(Math.random() * ran.length)];
+    return api.sendMessage(r,event.threadID,event.messageID);
+      }
+//-------------------------------------------//
+      else if (args[0] === 'remove') {
+      const fina = dipto.replace("remove ", "");
+            const respons = await axios.get(`${link}?remove=${fina}`);
+            const dat = respons.data.message;
+            api.sendMessage(`${dat}`, event.threadID, event.messageID);
+        }
+      //------------------------------------//
+    else if (args[0] === 'rm' && dipto.includes('-')) {
+          const fina = dipto.replace("rm ", "");
+         const fi = fina.split(' - ')[0]
+         const f = fina.split(' - ')[1]
+            const respons = await axios.get(`${link}?remove=${fi}&index=${f}`);
+            const da = respons.data.message;
+            api.sendMessage(`${da}`, event.threadID, event.messageID);
+    }
+  //-------------------------------------//
+       else if (args[0] === 'list') {
+            const respo = await axios.get(`${link}?list=all`);
+            const d = respo.data.length;
+            api.sendMessage(`Total Teach = ${d}`, event.threadID, event.messageID);
+        }
+    //-------------------------------------//
+          else if (args[0] === 'msg' || args[0] === 'message') {
+      const fuk = dipto.replace("msg ", "");
+            const respo = await axios.get(`${link}?list=${fuk}`);
+            const d = respo.data.data;
+            api.sendMessage(`Message ${fuk} = ${d}`, event.threadID, event.messageID);
+          }
+  //-------------------------------------//
+        else if (args[0] === 'edit') {
+            const command = dipto.split(' - ')[1];
+            if (command.length < 2) {
+                return api.sendMessage('❌ | Invalid format! Use edit [YourMessage] - [NewReply]', event.threadID, event.messageID);
+            }
+            const res = await axios.get(`${link}?edit=${args[1]}&replace=${command}`);
+            const dA = res.data.message;
+            api.sendMessage(`changed ${dA}`, event.threadID, event.messageID);
+        } 
+ //-------------------------------------//
 
-	langs: {
-		en: {
-			chatting: 'Already Chatting with sim...',
-			error: 'Server Down Please Be Patient'
-		}
-	},
-
-	onStart: async function ({ args, message, event, getLang }) {
-		if (args[0]) {
-			const yourMessage = args.join(" ");
-			try {
-				const responseMessage = await getMessage(yourMessage);
-				return message.reply(`${responseMessage}`);
-			}
-			catch (err) {
-				console.log(err)
-				return message.reply(getLang("error"));
-			}
-		}
-	},
-
-	onChat: async ({ args, message, threadsData, event, isUserCallCommand, getLang }) => {
-		if (!isUserCallCommand) {
-			return;
-		}
-		if (args.length > 1) {
-			try {
-				const langCode = await threadsData.get(event.threadID, "settings.lang") || global.GoatBot.config.language;
-				const responseMessage = await getMessage(args.join(" "), langCode);
-				return message.reply(`${responseMessage}`);
-			}
-			catch (err) {
-				return message.reply(getLang("error"));
-			}
-		}
-	}
-};
-
-async function getMessage(yourMessage, langCode) {
-	try {
-		const res = await axios.get(`https://simsimi.fun/api/v2/?mode=talk&lang=ph&message=${yourMessage}&filter=false`);
-		if (!res.data.success) {
-			throw new Error('API returned a non-successful message');
-		}
-		return res.data.success;
-	} catch (err) {
-		console.error('Error while getting a message:', err);
-		throw err;
-	}
-      } 
+        else if (args[0] === 'teach' && args[1] !== 'amar'){
+           command = dipto.split(' - ')[1];
+          comd = dipto.split(' - ')[0];
+          final = comd.replace("teach ", "");
+                if (command.length < 2) {
+                return api.sendMessage('❌ | Invalid format! Use [YourMessage] - [Reply1], [Reply2], [Reply3]... OR remove [YourMessage] OR list OR edit [YourMessage] - [NewReply]', event.threadID, event.messageID);
+            }
+            const re = await axios.get(`${link}?teach=${final}&reply=${command}`);
+            const tex = re.data.message;
+            api.sendMessage(`✅ Replies added ${tex}`, event.threadID, event.messageID);
+        }
+  //-------------------------------------//
+    else if (args[0] === 'teach' && args[1] === 'amar'){
+         command = dipto.split(' - ')[1];
+          comd = dipto.split(' - ')[0];
+          final = comd.replace("teach ", "");
+            if (command.length < 2) {
+                return api.sendMessage('❌ | Invalid format! Use [YourMessage] - [Reply1], [Reply2], [Reply3]... OR remove [YourMessage] OR list OR edit [YourMessage] - [NewReply]', event.threadID, event.messageID);
+            }
+            const re = await axios.get(`${link}?teach=${final}&senderID=${uid}&reply=${command}`);
+            const tex = re.data.message;
+            api.sendMessage(`✅ Replies added ${tex}`, event.threadID, event.messageID);
+        }
+     //-------------------------------------//
+        else if (dipto.includes('amar name ki') || dipto.includes('amr nam ki') || dipto.includes('amar nam ki') || dipto.includes('amr name ki')){
+        const response = await axios.get(`${link}?text=amar name ki&senderID=${uid}`);
+        const data = response.data.reply;
+        api.sendMessage(`${data}`, event.threadID, event.messageID);
+           }
+  //----------------------------------//
+      else {
+        const response = await axios.get(`${link}?text=${dipto}`);
+        const data = response.data.reply;
+        api.sendMessage(`${data}`, event.threadID, event.messageID);
+           }
+      } catch (e){
+        console.log(e)
+        api.sendMessage("Please check you api-!!",event.threadID,event.messageID);
+      }
+    }
+    }
