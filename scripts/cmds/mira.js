@@ -3,7 +3,6 @@ const axios = require('axios');
 module.exports = {
   config: {
     name: "mira",
-    aliases: ["kim", "ayan" ],
     version: "6.9.0",
     author: "MR.AYAN",
     countDown: 0,
@@ -24,7 +23,7 @@ const link = "https://noobs-api.onrender.com/dipto/baby";
       let final;
       try{
       if(!args[0]){
-        const ran = ["mira is coming here\n \nHow can i assist you"," Hello,i am mira\n \nHow can i assist you?","Hi,i am mira kim\n \nHow can i assist you?"];
+        const ran = ["𝐌𝐢𝐫𝐚 𝐢𝐬 𝐜𝐨𝐦𝐢𝐧𝐠 𝐡𝐞𝐫𝐞\n \n𝐇𝐨𝐰 𝐜𝐚𝐧 𝐢 𝐚𝐬𝐬𝐢𝐬𝐭 𝐲𝐨𝐮?","𝐇𝐞𝐥𝐥𝐨,𝐢 𝐚𝐦 𝐦𝐢𝐫𝐚 𝐫𝐨𝐛𝐨𝐭\n \n𝐇𝐨𝐰 𝐜𝐚𝐧  𝐚𝐬𝐬𝐢𝐬𝐭 𝐲𝐨𝐮","𝐇𝐞𝐥𝐥𝐨,𝐢 𝐚𝐦 𝐦𝐢𝐫𝐚 𝐤𝐢𝐦\n \n𝐇𝐨𝐰 𝐜𝐚𝐧 𝐢 𝐚𝐬𝐬𝐢𝐬𝐭 𝐲𝐨𝐮?"];
         const r = ran[Math.floor(Math.random() * ran.length)];
     return api.sendMessage(r,event.threadID,event.messageID);
       }
@@ -78,7 +77,7 @@ const link = "https://noobs-api.onrender.com/dipto/baby";
             }
             const re = await axios.get(`${link}?teach=${final}&reply=${command}`);
             const tex = re.data.message;
-            api.sendMessage(`✅ Replies added ${tex}`, event.threadID, event.messageID);
+            api.sendMessage(`📝 𝐑𝐄𝐏𝐋𝐈𝐄𝐒 𝐀𝐃𝐃𝐄𝐃 𝐒𝐔𝐂𝐂𝐄𝐒𝐒𝐅𝐔𝐋\n\n${tex}`, event.threadID, event.messageID);
         }
   //-------------------------------------//
     else if (args[0] === 'teach' && args[1] === 'amar'){
@@ -90,7 +89,7 @@ const link = "https://noobs-api.onrender.com/dipto/baby";
             }
             const re = await axios.get(`${link}?teach=${final}&senderID=${uid}&reply=${command}`);
             const tex = re.data.message;
-            api.sendMessage(`✅ Replies added ${tex}`, event.threadID, event.messageID);
+            api.sendMessage(`📝 𝐑𝐄𝐏𝐋𝐈𝐄𝐒 𝐀𝐃𝐃𝐄𝐃 𝐒𝐔𝐂𝐂𝐄𝐒𝐒𝐅𝐔𝐋\n\n${tex}`, event.threadID, event.messageID);
         }
      //-------------------------------------//
         else if (dipto.includes('amar name ki') || dipto.includes('amr nam ki') || dipto.includes('amar nam ki') || dipto.includes('amr name ki')){
