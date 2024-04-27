@@ -1,9 +1,9 @@
 module.exports = {
   config: {
-    name: "lyricalvideo",
-    aliases: ["lyricsvideo", "lyricseditvibe", "lyricaledit"],
+    name: "lyric",
+    aliases: ["lyricvideo", "lyricalvideo", "lrcvdo"],
     version: "1.0",
-    author: "kshitiz",
+    author: "MR.AYAN",
     countDown: 10,
     role: 0,
     shortDescription: "get lyrical video",
@@ -13,7 +13,7 @@ module.exports = {
   },
 
   onStart: async function ({ api, event }) {
-    const sentMessage = await api.sendMessage("✅ Loading random lyrical video\nPlease wait...!", event.threadID);
+    const sentMessage = await api.sendMessage("⏳ | Loading random lyrical video\nPlease wait...!!", event.threadID);
     const link = [
       "https://drive.google.com/uc?export=download&id=1xdoZpGGd1iC9zkTHojL-uh_Xu8pp8LwJ",// video credits lyrics edit vibe (fb group)
       "https://drive.google.com/uc?export=download&id=1RNZhamE4ArtjdsCvbeBWtIzhRYmMbG6z",
@@ -54,7 +54,7 @@ module.exports = {
     const randomVideo = link[randomIndex];
 
     await api.sendMessage({
-      body: 'ENJOY..🤍',
+      body: '✅ Successful lyrical-video ',
       attachment: await global.utils.getStreamFromURL(randomVideo),
     }, event.threadID);
 
@@ -63,4 +63,4 @@ module.exports = {
       api.unsendMessage(sentMessage.messageID);
     }, 10000); 
   },
-};
+}; 
