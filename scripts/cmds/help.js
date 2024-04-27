@@ -80,7 +80,29 @@ module.exports = {
         const guideBody = configCommand.guide?.en || "No guide available.";
         const usage = guideBody.replace(/{p}/g, prefix).replace(/{n}/g, configCommand.name);
 
-        const response = `★★★▰▱▰▱▰▱▰★★★\n      •╰┈► ${configCommand.name}  ◄┈╯•\n\n           𝙄𝙉𝙁 \n𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻➠ ${longDescription}\n𝗼𝘁𝗵𝗲𝗿 𝗻𝗮𝗺𝗲𝘀➠ ${configCommand.aliases ? configCommand.aliases.join(", ") : "Do not have"}Other names in your group:  Do not have\n𝗩𝗲𝗿𝘀𝗶𝗼𝗻➠ ${configCommand.version || "1.0"\n𝗥𝗼𝗹𝗲➠ ${roleText}\n𝗧𝗶𝗺𝗲 𝗽𝗲𝗿 𝗰𝗼𝗺𝗺𝗮𝗱➠ ${configCommand.countDown || 1}s\n𝗔𝘂𝘁𝗵𝗼𝗿➠ ${author}\n├── 𝙐𝙎𝘼𝙂𝙀\n${usage}\n├── 𝙉𝙊𝙏𝙀𝙎\ncoding by MR.AYAN\n★★★▰▱▰▱▰▱▰★★★`;
+        const response = `━━━━━━━━━━━━━━━━━♡
+   
+    ➢  ♡𝐍𝐀𝐌𝐄♡ 
+    ➠${configCommand.name}
+    ➢ 𝙄𝙉𝙁𝙊
+    ➠𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻 : ${longDescription}
+    
+    ➠𝗼𝘁𝗵𝗲𝗿 𝗻𝗮𝗺𝗲𝘀 : ${configCommand.aliases ? configCommand.aliases.join(", ") : "Do not have"}
+    Other names in your group:  Do not have
+   
+    ➠𝗩𝗲𝗿𝘀𝗶𝗼𝗻 : ${configCommand.version || "1.0"}
+   
+    ➠𝗥𝗼𝗹𝗲 : ${roleText}
+   
+    ➠𝗧𝗶𝗺𝗲 𝗽𝗲𝗿 𝗰𝗼𝗺𝗺𝗮𝗱: ${configCommand.countDown || 1}s
+   
+    ➠𝗔𝘂𝘁𝗵𝗼𝗿: ${author}
+     ➢ 𝙐𝙎𝘼𝙂𝙀
+   ➠ ${usage}
+     ➢ 𝙉𝙊𝙏𝙀𝙎
+    The content inside  <XXXXX> can be changed
+    The content inside [a|b|c] is a or b or c
+  ━━━━━━━━━━━━━━━━━━ꔪ`;
 
         await message.reply(response);
       }
