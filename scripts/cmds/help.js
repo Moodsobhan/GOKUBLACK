@@ -34,7 +34,7 @@ module.exports = {
       const categories = {};
       let msg = "";
 
-      msg += `╔═══════════╗\n     ♡︎𝘾𝙈𝘿 𝙇𝙄𝙎𝙏♡︎\n╚═══════════╝`; // replace with your name 
+      msg += `╔═════════════╗\n       ♡︎𝘾𝙈𝘿 𝙇𝙄𝙎𝙏♡︎\n╚═════════════╝`; // replace with your name 
 
       for (const [name, value] of commands) {
         if (value.config.role > 1 && role < value.config.role) continue;
@@ -46,15 +46,15 @@ module.exports = {
 
       Object.keys(categories).forEach((category) => {
         if (category !== "info") {
-          msg += `\n╭─────────♡︎\n│ 『  ${category.toUpperCase()}  』`;
+          msg += `\n╭────────────────♡︎\n│ 『  ${category.toUpperCase()}  』`;
 
           const names = categories[category].commands.sort();
           for (let i = 0; i < names.length; i += 3) {
-            const cmds = names.slice(i, i + 3).map((item) => `☪︎${item}`);
+            const cmds = names.slice(i, i + 3).map((item) => `⌾${item}`);
             msg += `\n│ ${cmds.join(" ".repeat(Math.max(1, 10 - cmds.join("").length)))}`;
           }
 
-          msg += `\n╰────────ꔪ`;
+          msg += `\n╰───────────ꔪ`;
         }
       });
 
@@ -82,26 +82,21 @@ module.exports = {
 
         const response = `━━━━━━━━━━━━━━━━━♡
    
-    ➢  ♡𝐍𝐀𝐌𝐄♡ 
+   ➢  ♡𝐍𝐀𝐌𝐄♡ 
     ➠${configCommand.name}
-    ➢ 𝙄𝙉𝙁𝙊
-    ➠𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻 : ${longDescription}
+   ➢ 𝙄𝙉𝙁𝙊
     
-    ➠𝗼𝘁𝗵𝗲𝗿 𝗻𝗮𝗺𝗲𝘀 : ${configCommand.aliases ? configCommand.aliases.join(", ") : "Do not have"}
+     ➠𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻 : ${longDescription}
+     ➠𝗼𝘁𝗵𝗲𝗿 𝗻𝗮𝗺𝗲𝘀 : ${configCommand.aliases ? configCommand.aliases.join(", ") : "Do not have"}
     Other names in your group:  Do not have
-   
-    ➠𝗩𝗲𝗿𝘀𝗶𝗼𝗻 : ${configCommand.version || "1.0"}
-   
-    ➠𝗥𝗼𝗹𝗲 : ${roleText}
-   
-    ➠𝗧𝗶𝗺𝗲 𝗽𝗲𝗿 𝗰𝗼𝗺𝗺𝗮𝗱: ${configCommand.countDown || 1}s
-   
-    ➠𝗔𝘂𝘁𝗵𝗼𝗿: ${author}
-     ➢ 𝙐𝙎𝘼𝙂𝙀
-   ➠ ${usage}
-     ➢ 𝙉𝙊𝙏𝙀𝙎
-    The content inside  <XXXXX> can be changed
-    The content inside [a|b|c] is a or b or c
+     ➠𝗔𝘂𝘁𝗵𝗼𝗿: ${author}
+     ➠𝗩𝗲𝗿𝘀𝗶𝗼𝗻 : ${configCommand.version || "1.0"}
+     ➠𝗥𝗼𝗹𝗲 : ${roleText}
+     ➠𝗧𝗶𝗺𝗲 𝗽𝗲𝗿 𝗰𝗼𝗺𝗺𝗮𝗱: ${configCommand.countDown || 1}s
+   ➢ 𝙐𝙎𝘼𝙂𝙀
+     ➠ ${usage}
+   ➢ 𝙉𝙊𝙏𝙀𝙎
+    scripts coding by MR.AYAN
   ━━━━━━━━━━━━━━━━━━ꔪ`;
 
         await message.reply(response);
