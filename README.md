@@ -6,7 +6,7 @@
 </h5>
 
 ## Introduction
-<h1 align="center"><img src="./dashboard/images/logo-non-bg.png" width="22px"> GOATBOTV3 - Bot Chat Messenger</h1>
+<h1 align="center"><img src="./dashboard/images/logo-non-bg.png" width="22px"> GOATBOTV2 - Bot Chat Messenger</h1>
 
 <p align="center">
 	<a href="https://nodejs.org/dist/v11.30.0">
