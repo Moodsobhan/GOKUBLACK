@@ -4,7 +4,7 @@ module.exports = {
 	config: {
 		name: "restart",
 		version: "1.0",
-		author: "NTKhang | Light_X_Rafi",
+		author: "MR.AYAN",
 		countDown: 5,
 		role: 2,
 		shortDescription: {
@@ -35,7 +35,7 @@ module.exports = {
 		const pathFile = `${__dirname}/tmp/restart.txt`;
 		if (fs.existsSync(pathFile)) {
 			const [tid, time] = fs.readFileSync(pathFile, "utf-8").split(" ");
-			api.sendMessage(`✅ | Bot restarted\n⏰ | Time: ${(Date.now() - time) / 1000}s`, tid);
+			api.sendMessage(`✅ | Bot restarted Done Na Master Loid\n⏰ | Time: ${(Date.now() - time) / 1000}s`, tid);
 			fs.unlinkSync(pathFile);
 		}
 	},
@@ -45,15 +45,5 @@ module.exports = {
 		fs.writeFileSync(pathFile, `${event.threadID} ${Date.now()}`);
 		await message.reply(getLang("restartting"));
 		process.exit(2);
-	},
-
-	autoRestart: function () {
-		setInterval(() => {
-			console.log("🔄 | Auto-restarting bot...");
-			process.exit(2);
-		}, 20 * 60 * 1000); // 20 minutes
 	}
 };
-
-// Call the autoRestart function to start the auto-restart process
-module.exports.autoRestart(); 
