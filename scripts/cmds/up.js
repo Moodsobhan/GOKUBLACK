@@ -6,14 +6,14 @@ module.exports = {
     author: "MR.AYAN",
     role: 0,
     shortDescription: {
-      en: "Displays the bot's uptime."
+      en: "Displays the uptime of the bot."
     },
     longDescription: {
-      en: "Find out how long the bot has been tirelessly serving you."
+      en: "Displays the amount of time that the bot has been running for."
     },
-    category: "?????????",
+    category: "System",
     guide: {
-      en: "Use {p}uptime to reveal the bot's operational duration."
+      en: "Use {p}uptime to display the uptime of the bot."
     }
   },
   onStart: async function ({ api, event, args }) {
@@ -45,33 +45,22 @@ module.exports = {
       "Good day, Sir/Madam! ?"
     ];
     const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+      
+ const imageLinks = [
+      "http://tinyurl.com/2bq2cm8v",
+      "http://tinyurl.com/2akqp8ym",
+      "http://tinyurl.com/2bgqfxtf",
+      "http://tinyurl.com/24k52arc",
+      "http://tinyurl.com/2ardsmcw",
 
+    ];
 
     const uptime = process.uptime();
     const seconds = Math.floor(uptime % 60);
     const minutes = Math.floor((uptime / 60) % 60);
     const hours = Math.floor((uptime / (60 * 60)) % 24);
     const days = Math.floor(uptime / (60 * 60 * 24));
-
-    let uptimeString = `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
-    if (days === 0) {
-      uptimeString = `${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
-      if (hours === 0) {
-        uptimeString = `${minutes} minutes, and ${seconds} seconds`;
-        if (minutes === 0) {
-          uptimeString = `${seconds} seconds`;
-        }
-      }
-    }
-
-    const message = `${randomGreeting}\n\nGreetings! Your loyal bot has been operational for: ${uptimeString}`;
-
-    
-    const imageStream = await global.utils.getStreamFromURL(imageUrl);
-
-    api.sendMessage({
-      body: message,
-      attachment: imageStream
-    }, event.threadID, event.messageID);
+    const uptimeString = `\n${hours} 𝒉𝒐𝒖𝒓𝒔\n${minutes} 𝒎𝒊𝒏𝒖𝒕𝒆𝒔\n${seconds} 𝒔𝒆𝒄𝒐𝒏𝒅 `;
+    api.sendMessage(`𝑯𝒆𝒍𝒍𝒐 𝑴𝒂𝒔𝒕𝒆𝒓\n\n𝑻𝒉𝒆 𝑩𝒐𝒕 𝑯𝒂𝒔 𝑩𝒆𝒆𝒏 𝑹𝒖𝒏𝒏𝒊𝒏𝒈 𝑭𝒐𝒓 ${uptimeString}.`, event.threadID);
   }
 };
