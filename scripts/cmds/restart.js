@@ -35,7 +35,7 @@ module.exports = {
 		const pathFile = `${__dirname}/tmp/restart.txt`;
 		if (fs.existsSync(pathFile)) {
 			const [tid, time] = fs.readFileSync(pathFile, "utf-8").split(" ");
-			api.sendMessage(`✅ | 𝐁𝐨𝐭 𝐫𝐞𝐬𝐭𝐚𝐫𝐭𝐞𝐝 𝐃𝐨𝐧𝐞...\⏰ | Time: ${(Date.now() - time) / 1000}s`, tid);
+			api.sendMessage(`✅ | 𝐁𝐨𝐭 𝐫𝐞𝐬𝐭𝐚𝐫𝐭𝐞𝐝 𝐃𝐨𝐧𝐞...\n\n\n⏰ | Time: ${(Date.now() - time) / 1000}s`, tid);
 			fs.unlinkSync(pathFile);
 		}
 	},
