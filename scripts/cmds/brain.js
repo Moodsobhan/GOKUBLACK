@@ -28,7 +28,7 @@ module.exports = {
         name: "brain",
         aliases: ['brainshop', 'brainai'],
         version: "1.0",
-        author: "Samir B. Thakuri",
+        author: "MR.AYAN",
         countDown: 5,
         role: 0,
         shortDescription: "AI Chatbot",
