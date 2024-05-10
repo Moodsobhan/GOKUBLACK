@@ -5,7 +5,7 @@ module.exports = {
 		name: "waifu",
 		aliases: ["waifu, neko"],
 		version: "1.0",
-		author: "@tas33n",
+		author: "MR.AYAN",
 		countDown: 5,
 		role: 0,
 		shortDescription: "get random waifu",
