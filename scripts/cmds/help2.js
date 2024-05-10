@@ -7,7 +7,7 @@ const doNotDelete = "[ ㋛︎ | 𝐌𝐈𝐑𝐀 𝐑𝐎𝐁𝐎𝐓 ]"; // cha
 
 module.exports = {
   config: {
-    name: "help",
+    name: "help2",
     version: "1.17",
     author: "𝐌𝐑.𝐀𝐘𝐀𝐍", // original author MR.AYAN
     countDown: 10,
