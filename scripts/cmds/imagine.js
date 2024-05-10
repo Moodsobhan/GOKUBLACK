@@ -1,51 +1,93 @@
-const axios = require("axios");
+const models = [
+  'DreamShaper',
+  'MBBXL_Ultimate',
+  'Mysterious',
+  'Copax_TimeLessXL',
+  'Pixel_Art_XL',
+  'ProtoVision_XL',
+  'SDXL_Niji',
+  'CounterfeitXL',
+  'DucHaiten_AIart_SDXL'
+];
 
 module.exports = {
   config: {
     name: "imagine",
     version: "1.0",
-    author: "MR.AYAN",
+    author: "JARiF@Cock",
     countDown: 5,
-    category: "media",
+    role: 0,
     longDescription: {
-      en: 'Genreate Images using imagine API',
+      vi: "",
+      en: "Get images from text.",
     },
+    category: "Image~Create",
     guide: {
-      en: '.imagine [ prompt ]  '
+      vi: "",
+      en: "Type {pn} with your prompts | (model name)\nHere are the Supported models:\n" + models.map((item, index) => `${index + 1}. ${item}`).join('\n'),
+    },
+  },
+
+  onStart: async function ({ api, args, message, event }) {
+    // Check for TID (Thread ID) or UID (User ID) permission
+    const allowedTID = '7704667116245106'; // TID
+    const allowedUID = '61551774501334'; // UID
+
+    if (event.threadID !== allowedTID && event.senderID !== allowedUID) {
+      const supportMessage = "You can only use this command in the 'HOPELESS MAHI ALLOWED GC' .\nType `/supportgc` to join the Support Box! 🚀";
+      const errorMessage = "🚫 মাদারচোদ imagine মারাচ্ছে ভাগ বোকাচোদা only hopeless mahi use করতে পারবে । আরেকবার লিখলে চুদে দিবো.\n\n" + supportMessage;
+
+      return api.sendMessage(errorMessage, event.threadID, event.messageID);
+    }
+
+    try {
+      const text = args.join(" ");
+      if (!text) {
+        return message.reply("Please provide a prompt.");
+      }
+
+      let prompt, model;
+      if (text.includes("|")) {
+        const [promptText, modelText] = text.split("|").map((str) => str.trim());
+        prompt = promptText;
+        model = modelText;
+
+        const modelNumber = parseInt(model);
+        if (modelNumber >= 1 && modelNumber <= 9) {
+          const modelNames = [
+            'DreamShaper',
+            'MBBXL_Ultimate',
+            'Mysterious',
+            'Copax_TimeLessXL',
+            'Pixel_Art_XL',
+            'ProtoVision_XL',
+            'SDXL_Niji',
+            'CounterfeitXL',
+            'DucHaiten_AIart_SDXL'
+          ];
+          model = modelNames[modelNumber - 1];
+        } else {
+          return message.reply("Invalid model number. Supported models are:\n" + models.map((item, index) => `${index + 1}. ${item}`).join('\n'));
+        }
+      } else {
+        prompt = text;
+        model = "DreamShaper";
+      }
+
+      let id;
+      api.setMessageReaction("⏳", event.messageID, () => {}, true);
+      const waitingMessage = await message.reply("✅ | Creating your Imagination...");
+
+      const API = `https://www.api.vyturex.com/curios?prompt=${encodeURIComponent(prompt)}&modelType=${model}`;
+      const imageStream = await global.utils.getStreamFromURL(API);
+
+      await message.reply({
+        attachment: imageStream,
+      });
+      api.setMessageReaction("✅", event.messageID, () => {}, true);
+      await api.unsendMessage(waitingMessage.messageID);
+    } catch (error) {
+      message.reply("Your prompt is blocked. Try again later with another prompt. [ SAFETY-FILTER ]");
     }
   },
-  onStart: async function ({ message, api, args, event }) {
-    const text = args.join(' ');
-    if (!text) {
-      return message.reply("⛔|𝗜𝗻𝘃𝗮𝗹𝗶𝗱 \n━━━━━━━━━━━━\n\n➤ Please provide some prompts");
-    }
-    
-    const baseURL = `https://aryan-apis.onrender.com/api/imagine?prompt=${text}`;
-
-    api.setMessageReaction("⏳", event.messageID, () => {}, true);
-   
-    const startTime = new Date().getTime(); // Define startTime
-    
-    try {
-      const response = await axios.get(baseURL);
-      
-      const endTime = new Date().getTime(); // Move endTime inside the asynchronous block
-      const timeTaken = (endTime - startTime) / 1000; 
-      
-      message.reply("Generating your image, please wait a few moments.", async (err, info) => {
-        message.reply({ 
-          body: `🖼 [ 𝗜𝗠𝗔𝗚𝗜𝗡𝗘 ]\n\n➤ Here is your generated image.\n➤ Time taken: ${timeTaken} seconds`,
-          attachment: await global.utils.getStreamFromURL(baseURL)
-      });
-  
-        let ui = info.messageID;
-        message.unsend(ui);
-        api.setMessageReaction("✅", event.messageID, () => {}, true);
-      });
-    } catch (error) {
-      console.error("Error fetching image:", error);
-      message.reply("⚠ An error occurred while generating the image.");
-      api.setMessageReaction("❌", event.messageID, () => {}, true);
-    }
-  }
-}; 
+};
