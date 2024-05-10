@@ -4,11 +4,11 @@ const tinyurl = require('tinyurl');
 
 module.exports = {
  config: {
-  name: "remini2",
+  name: "remini",
   version: "2.2",
   role: 2,
   countDown: 3,
-  author: "𝐀𝐒𝐈𝐅 𝐱𝟔𝟗",
+  author: "MR.AYAN",
   shortDescription: { 
   en: "( 𝚁𝚎𝚖𝚒𝚗𝚒 )"
   },
