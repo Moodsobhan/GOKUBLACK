@@ -64,7 +64,7 @@ function _0x14fe() {
         'QtnGu',
         '1910418kjBwBm',
         't...⏳',
-        'nijijourne',
+        'amx',
         'Text\x20to\x20Im',
         '{pn}\x20promp'
     ];
