@@ -11,7 +11,7 @@ module.exports = {
     aliases: ["dalle"],
     version: "1.0",
     author: "MR.AYAN",
-    role: 0,
+    role: 2,
     countDown: 0,
     longDescription: {
       en: "Generate unique and captivating images using DALL-E 3"
