@@ -22,7 +22,7 @@ module.exports = {
   },
   onStart: async function ({ api, event }) {
       try {
-        const loadingMessage = "Loading Owner Information...";
+        const loadingMessage = "✨Please Wait Loading Owner Information...";
         await api.sendMessage(loadingMessage, event.threadID);
 
         const ownerInfo = {
@@ -48,19 +48,21 @@ module.exports = {
 
         const response = `
           𝐎𝘄𝗻𝗲𝗿 𝐈𝗻𝗳𝗼𝗿𝗺𝗮𝘁𝗶𝗼𝗻:
-          ◊─────────────────◊
+        ◊──────────────────◊
           
-          Name: ${ownerInfo.name}
+        Name: ${ownerInfo.name}
           
-          Gender: ${ownerInfo.gender}
+        Gender: ${ownerInfo.gender}
           
-          Hobby: ${ownerInfo.hobby}
+        Hobby: ${ownerInfo.hobby}
           
-          Relationship: ${ownerInfo.relationship}
+        Relationship: ${ownerInfo.relationship}
           
-          Facebook: ${ownerInfo.facebookLink}
+        Facebook: ${ownerInfo.facebookLink}
           
-          Status: ${ownerInfo.bio}
+        Status: ${ownerInfo.bio}
+
+        ◊──────────────────◊
         `;
 
         await api.sendMessage({
