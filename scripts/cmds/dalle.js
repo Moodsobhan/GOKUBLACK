@@ -6,7 +6,7 @@ module.exports = {
     name: "bing",
     aliases: ["dalle"],
     version: "2.0",
-    author: "RUBISH",
+    author: "MR.AYAN",
     countDown: 5,
     role: 0,
     longDescription: {
@@ -43,7 +43,7 @@ module.exports = {
       const randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
 
       // TAKE FULL API LINK FROM CMD & API OWNER RUBISH OWTHERWISE IT WON'T BE WORKING...
-      const apiURL = `https://dall-e-3-rubish.onrender.com/api/gen-img-url?prompt=${encodedPrompt}&cookie=${randomCookie}&apiKey=${apiKey}`;
+      const apiURL = `https://rehatdesu.xyz/api/imagine/dalle?cookie=${cookie}&auth=${auth}&prompt=${encodeURIComponent(prompt)}`;
 
       const startTime = Date.now();
       const processingMessage = await message.reply(`
