@@ -5,7 +5,7 @@ const path = require('path');
 module.exports = {
   config: {
     name: "owner",
-    author: "404",// idea and half code stolen from mirai coded by Rickiel haha
+    author: "𝗠𝗥.𝗔𝗬𝗔𝗡",
     version: "2.0",
     cooldowns: 5,
     role: 0,
@@ -26,15 +26,15 @@ module.exports = {
         await api.sendMessage(loadingMessage, event.threadID);
 
         const ownerInfo = {
-          name: '𝐀𝐒𝐈𝐅 𝐱𝟔𝟗',
-          gender: '𝑴𝒂𝒍𝒆',
-          hobby: '𝑩𝒐𝒕 𝑬𝑑𝒊𝒕𝒊𝒏𝑔, 𝑺𝒕𝑒𝑎𝒍𝒊𝒏𝑔 𝑪𝒐𝒎𝒎𝑎𝒏𝑑𝒔, 𝑬𝒕𝑐.',
-          relationship: '𝑰𝒏 𝑎 𝑹𝑒𝒍𝑎𝒕𝒊𝒐𝒏𝒔𝒉𝒊𝒑 𝒘𝒊𝒕𝒉 https://facebook.com/100086971370548',
-          facebookLink: 'https://facebook.com/4S1F.403',
-          bio: '𝑯𝒂𝒕𝒆𝒓𝒔 𝒂𝒓𝒆 𝒎𝒚 𝒎𝒐𝒕𝒊𝒗𝒂𝒕𝒐𝒓𝒔'
+          name: '𝗠𝗥.𝗔𝗬𝗔𝗡',
+          gender: '𝗠𝗮𝗹𝗲',
+          hobby: '𝗕𝗼𝘁 𝗰𝗼𝗱𝗶𝗻𝗴,𝗦𝘁𝗲𝗮𝗹𝗶𝗻𝗴 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀,𝗲𝘁𝗰..',
+          relationship: '𝗣𝘂𝗿𝗲 𝗦𝗶𝗻𝗴𝗹𝗲',
+          facebookLink: 'https://m.me/NOOBS.DEVELOPER.AYAN',
+          bio: '𝗛𝗮𝘁𝗲𝗿𝘀 𝗮𝗿𝗲 𝗺𝘆 𝗺𝗼𝘁𝗶𝘃𝗮𝘁𝗼𝗿𝘀'
         };
 
-        const videoUrl = 'https://drive.google.com/uc?export=download&id=1uFLIV0C-yqArk-Ne-_4HfWa-KtRw4S7d';
+        const videoUrl = 'https://i.imgur.com/JTwPWIq.jpeg';
         const tmpFolderPath = path.join(__dirname, 'tmp');
 
         if (!fs.existsSync(tmpFolderPath)) {
@@ -42,17 +42,24 @@ module.exports = {
         }
 
         const videoResponse = await axios.get(videoUrl, { responseType: 'arraybuffer' });
-        const videoPath = path.join(tmpFolderPath, 'owner_video.mp4');
+        const videoPath = path.join(tmpFolderPath, 'owner_photo.png');
 
         fs.writeFileSync(videoPath, Buffer.from(videoResponse.data, 'binary'));
 
         const response = `
           𝐎𝘄𝗻𝗲𝗿 𝐈𝗻𝗳𝗼𝗿𝗺𝗮𝘁𝗶𝗼𝗻:
+          ◊─────────────────◊
+          
           Name: ${ownerInfo.name}
+          
           Gender: ${ownerInfo.gender}
+          
           Hobby: ${ownerInfo.hobby}
+          
           Relationship: ${ownerInfo.relationship}
+          
           Facebook: ${ownerInfo.facebookLink}
+          
           Status: ${ownerInfo.bio}
         `;
 
