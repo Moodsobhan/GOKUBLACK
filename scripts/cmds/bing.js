@@ -2,8 +2,8 @@ const fs = require("fs-extra");
 const axios = require("axios");
 const path = require("path");
 
-const cookie = "https://tinyurl.com/4ctrj6y7"; // Enter _U value.
-const auth = "1u0Sez6VsjT0T33izsBOo9AVmEHtvQSVyAC_FOBQhDyVY6gNR0LXWrcVvBC7js0YpIxTTnmq9i5HEnyK6HeYh0KoWNbCnOgb12LoBu0lYrLJ6D6B_dUD35Y6X09DdaTHHYYbXn5GKwY6CF4F8nnjsRdqw7o_hpw1ia8UT6zeD9LHS363VjWozVachWGx11ZVfvYH9e95AQ8P-UI3qXzUB3qVGtXHgWi-LzHVi_3kyFT4 "; // Enter KievRPSSecAuth value.
+const cookie = "1u0Sez6VsjT0T33izsBOo9AVmEHtvQSVyAC_FOBQhDyVY6gNR0LXWrcVvBC7js0YpIxTTnmq9i5HEnyK6HeYh0KoWNbCnOgb12LoBu0lYrLJ6D6B_dUD35Y6X09DdaTHHYYbXn5GKwY6CF4F8nnjsRdqw7o_hpw1ia8UT6zeD9LHS363VjWozVachWGx11ZVfvYH9e95AQ8P-UI3qXzUB3qVGtXHgWi-LzHVi_3kyFT4"; // Enter _U value.
+const auth = "https://tinyurl.com/4ctrj6y7"; // Enter KievRPSSecAuth value.
 
 module.exports = {
   config: {
@@ -52,7 +52,7 @@ module.exports = {
 
     } catch (error) {
       console.error(error);
-      message.reply("Redirect failed! Most probably bad prompt.");
+      message.reply("📛 | Sorry I can't accept it..");
     } finally {
       await fs.remove(path.join(__dirname, 'cache'));
     }
