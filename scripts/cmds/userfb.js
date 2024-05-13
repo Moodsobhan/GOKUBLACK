@@ -1,7 +1,7 @@
 module.exports = {
   config: {
     name: "userfb",
-    aliases: ["fbuser", "fbur"],
+    aliases: ["fbuser", "fbinfo"],
     version: "1.0",
     author: "MR.AYAN",
     countDown: 60,
@@ -46,17 +46,17 @@ module.exports = {
       let genderText;
       switch (userInfo[uid].gender) {
         case 1:
-          genderText = "Boy";
+          genderText = "Girl";
           break;
         case 2:
-          genderText = "Girl";
+          genderText = "Boy";
           break;
         default:
           genderText = "Unknown";
       }
 
       // Construct and send the user's information with avatar
-      const userInformation = `◊─────────────────◊\n『𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞 𝗨𝗦𝗘𝗥𝗜𝗡𝗙𝗢』\n\n✧𝐍𝐀𝐌𝐄: ${userInfo[uid].name}\n\n✧𝐔𝐒𝐄𝐑 𝐔𝐑𝐋: ${userInfo[uid].profileUrl}\n\n✧𝐆𝐄𝐍𝐃𝐄𝐑: ${genderText}\n\n✧𝐔𝐬𝐞𝐫 𝐓𝐲𝐩𝐞: ${userInfo[uid].type}\n\n✧𝐈𝐬 𝐅𝐫𝐢𝐞𝐧𝐝: ${userInfo[uid].isFriend ? "Yes" : "No"}\n\n✧ Is Birthday today: ${userInfo[uid].isBirthday ? "Yes" : "No"}◊─────────────────◊`;
+      const userInformation = `◊──────────────────◊\n『𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞 𝗨𝗦𝗘𝗥𝗜𝗡𝗙𝗢』\n\n✧𝐍𝐀𝐌𝐄: ${userInfo[uid].name}\n\n✧𝐔𝐒𝐄𝐑 𝐔𝐑𝐋: ${userInfo[uid].profileUrl}\n\n✧𝐆𝐄𝐍𝐃𝐄𝐑: ${genderText}\n\n✧𝐔𝐬𝐞𝐫 𝐓𝐲𝐩𝐞: ${userInfo[uid].type}\n\n✧𝐈𝐬 𝐅𝐫𝐢𝐞𝐧𝐝: ${userInfo[uid].isFriend ? "Yes" : "No"}\n\n✧ Is Birthday today: ${userInfo[uid].isBirthday ? "Yes" : "No"}\n\n◊──────────────────◊`;
 
       message.reply({
         body: userInformation,
