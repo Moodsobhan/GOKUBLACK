@@ -27,7 +27,7 @@ function _0x14fe() {
         'reply',
         'YOUR\x20PROMP',
         '\x27t\x20use\x20bad',
-        'niji',
+        'animex',
         'utils',
         '1.0',
         'https://ts',
