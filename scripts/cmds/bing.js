@@ -2,16 +2,15 @@ const fs = require("fs-extra");
 const axios = require("axios");
 const path = require("path");
 
-const cookie = ""; // Enter _U value.
-const auth = ""; // Enter KievRPSSecAuth value.
+const cookie = "https://tinyurl.com/4ctrj6y7"; // Enter _U value.
+const auth = "1u0Sez6VsjT0T33izsBOo9AVmEHtvQSVyAC_FOBQhDyVY6gNR0LXWrcVvBC7js0YpIxTTnmq9i5HEnyK6HeYh0KoWNbCnOgb12LoBu0lYrLJ6D6B_dUD35Y6X09DdaTHHYYbXn5GKwY6CF4F8nnjsRdqw7o_hpw1ia8UT6zeD9LHS363VjWozVachWGx11ZVfvYH9e95AQ8P-UI3qXzUB3qVGtXHgWi-LzHVi_3kyFT4 "; // Enter KievRPSSecAuth value.
 
 module.exports = {
   config: {
     name: "bing",
-    aliases: ["dalle"],
     version: "1.0",
-    author: "MR.AYAN",
-    role: 2,
+    author: "MR.AYAN", //**full coding MR.AYAN but api rahat**//
+    role: 0,
     countDown: 0,
     longDescription: {
       en: "Generate unique and captivating images using DALL-E 3"
@@ -25,17 +24,17 @@ module.exports = {
   onStart: async function ({ api, event, args, message }) {
     const prompt = args.join(" ");
     if (!prompt) {
-      message.reply("Add something baka.");
+      message.reply("✅ | Successful your image baby🫠");
       return;
     }
     message.reply("𝐏𝐥𝐞𝐚𝐬𝐞 𝐰𝐚𝐢𝐭 𝐰𝐡𝐢𝐥𝐞 𝐩𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠...⏳");
 
     try {
-      const res = await axios.post(`https://tinyurl.com/4ctrj6y7/imagine/dalle?cookie=${cookie}&auth=${auth}&prompt=${encodeURIComponent(prompt)}`);
+      const res = await axios.post(`https://rehatdesu.xyz/api/imagine/dalle?cookie=${cookie}&auth=${auth}&prompt=${encodeURIComponent(prompt)}`);
       const data = res.data.results.images;
 
       if (!data || data.length === 0) {
-        message.reply("Redirect failed! Most probably bad prompt.");
+        message.reply("📛 | Sorry I can't accept it...");
         return;
       }
 
