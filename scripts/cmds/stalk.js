@@ -223,35 +223,4 @@ module.exports = {
 ╰───────────◊`, threadID);
     }
   },
-}; 						}
-
-						if (args.length > 0) {
-								prompt = args.join(" ");
-						}
-
-
-						let apiUrl = `https://project-niji.onrender.com/api/generate?prompt=${encodeURIComponent(prompt)}.&aspectRatio=${aspectRatio}&apikey=rehat&key=siam`;
-						if (imageUrl) {
-								apiUrl += `&imageUrl=${imageUrl}`;
-						}
-
-						const processingMessage = await message.reply("⛵ Initiating request");
-						message.reaction("⏳", event.messageID);
-
-						const response = await axios.post(apiUrl);
-						const img = response.data.url;
-
-						const downloadLink = `Your Imagination Is Created 🌟\nDownload: ${img}`;
-						await message.reply({
-								body: downloadLink,
-								attachment: await getStreamFromURL(img)
-						});
-						message.unsend(processingMessage.messageID);
-						await message.reaction("✅", event.messageID);
-				} catch (error) {
-						console.error(error);
-						message.reply("An error occurred.");
-						message.reaction("❌", event.messageID);
-				}
-		}
-};
+}; 
