@@ -24,7 +24,7 @@ module.exports = {
   onStart: async function ({ api, event, args, message }) {
     const prompt = args.join(" ");
     if (!prompt) {
-      message.reply("✅ | Successful your image baby🫠");
+      message.reply("📝 Enter your bing coding→📁");
       return;
     }
     message.reply("𝐏𝐥𝐞𝐚𝐬𝐞 𝐰𝐚𝐢𝐭 𝐰𝐡𝐢𝐥𝐞 𝐩𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠...⏳");
@@ -34,7 +34,7 @@ module.exports = {
       const data = res.data.results.images;
 
       if (!data || data.length === 0) {
-        message.reply("📛 | Sorry I can't accept it...");
+        message.reply("🔐 | Sorry I can't accept it...");
         return;
       }
 
@@ -52,7 +52,7 @@ module.exports = {
 
     } catch (error) {
       console.error(error);
-      message.reply("📛 | Sorry I can't accept it..");
+      message.reply("🔐 | Sorry I can't accept it..");
     } finally {
       await fs.remove(path.join(__dirname, 'cache'));
     }
