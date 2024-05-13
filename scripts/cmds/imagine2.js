@@ -1,79 +1,58 @@
 const axios = require('axios');
+const path = require('path');
+const fs = require('fs-extra');
+
 module.exports = {
   config: {
-    name: "imagine",
+    name: "imagine2",
+    aliases: ["imgine2"],
     version: "1.0",
-    author: "rehat--",
-    countDown: 10,
+    author: "Vex_Kshitiz",
+    countDown: 50,
+    role: 0,
     longDescription: {
-      en: "Create an image from your text with 4 models like midjourney."
+      vi: '',
+      en: "Imagine"
     },
     category: "ai",
-    role: 0,
     guide: {
-      en: '1 | DreamshaperXL10' +
-        '\n2 | DynavisionXL' +
-        '\n3 | JuggernautXL' +
-        '\n4 | RealismEngineSDXL' +
-        '\n5 | Sdxl 1.0'
+      vi: '',
+      en: "{pn} <prompt> - <ratio>"
     }
   },
 
-  onStart: async function ({ api, event, args, message }) {
-    const info = args.join(' ');
-    const [promptPart, modelPart] = info.split('|').map(item => item.trim());
-
-    if (!promptPart) return message.reply("Add something baka.");
-
-    message.reply("Please wait...⏳", async (err, info) => {
-      let ui = info.messageID;
-
-      try {
-        const modelParam = modelPart;
-        let apiUrl = `https://turtle-apis.onrender.com/api/v2/sdxl?prompt=${encodeURIComponent(promptPart)}`;
-        if (modelPart) {
-          apiUrl += `&model=${modelParam}`;
-        }
-
-        const response = await axios.get(apiUrl);
-        const combinedImg = response.data.combinedImage;
-        const img = response.data.imageUrls.image;
-        message.unsend(ui);
-        message.reply({
-          body: "Please reply with the image number (1, 2, 3, 4) to get the corresponding image in high resolution.",
-          attachment: await global.utils.getStreamFromURL(combinedImg)
-        }, async (err, info) => {
-          let id = info.messageID; global.GoatBot.onReply.set(info.messageID, {
-            commandName: this.config.name,
-            messageID: info.messageID,
-            author: event.senderID,
-            imageUrls: response.data.imageUrls
-          });
-        });
-      } catch (error) {
-        console.error(error);
-        api.sendMessage(`${error}`, event.threadID);
-      }
-    });
-  },
-
-  onReply: async function ({ api, event, Reply, usersData, args, message }) {
-    const reply = parseInt(args[0]);
-    const { author, messageID, imageUrls } = Reply;
-
-    if (event.senderID !== author) return;
-
+  onStart: async function ({ api, commandName, event, args }) {
     try {
-      if (reply >= 1 && reply <= 4) {
-        const img = imageUrls[`image${reply}`];
-        message.reply({ attachment: await global.utils.getStreamFromURL(img) });
-      } else {
-        message.reply("❌ | Invalid number try again later.");
+      api.setMessageReaction("✅", event.messageID, (a) => {}, true);
+      let prompt = args.join(' ');
+      let ratio = '1:1';
+
+      if (args.length > 0 && args.includes('-')) {
+        const parts = args.join(' ').split('-').map(part => part.trim());
+        if (parts.length === 2) {
+          prompt = parts[0];
+          ratio = parts[1];
+        }
       }
+
+      const response = await axios.get(`https://imagine-kshitiz-zia7.onrender.com/mj?prompt=${encodeURIComponent(prompt)}&ratio=${encodeURIComponent(ratio)}`);
+      const imageUrls = response.data.imageUrls;
+
+      const imgData = [];
+      const numberOfImages = 4;
+
+      for (let i = 0; i < Math.min(numberOfImages, imageUrls.length); i++) {
+        const imageUrl = imageUrls[i];
+        const imgResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+        const imgPath = path.join(__dirname, 'cache', `${i + 1}.jpg`);
+        await fs.outputFile(imgPath, imgResponse.data);
+        imgData.push(fs.createReadStream(imgPath));
+      }
+
+      await api.sendMessage({ body: '', attachment: imgData }, event.threadID, event.messageID);
     } catch (error) {
-      console.error(error);
-      message.reply(`${error}`, event.threadID);
+      console.error("Error:", error);
+      api.sendMessage("error contact kshitiz", event.threadID, event.messageID);
     }
-    await message.unsend(Reply.messageID);
-  },
-};
+  }
+}; 
