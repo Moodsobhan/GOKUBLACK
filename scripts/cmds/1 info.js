@@ -4,7 +4,7 @@ const moment = require('moment-timezone');
 module.exports = {
   config: {
     name: "info",
-    aliases: ["inf", "owner"],
+    aliases: ["inf", "in4"],
     version: "2.0",
     author: "MR.AYAN",
     countDown: 5,
@@ -35,12 +35,12 @@ module.exports = {
   },
 
   sendInfo: async function (message) {
-    const botName = "【.】• ➠ 𝘼𝙔𝘼𝙉 ➠𝙍𝙊𝘽𝙊𝙏";
+    const botName = "♡︎𝗠𝗜𝗥𝗔 𝗞𝗜𝗠 𝗥𝗢𝗕𝗢𝗧♡︎";
     const botPrefix = ".";
-    const authorName = "𝐌𝐑.𝐀𝐘𝐀𝐍";
-    const authorFB = "https://m.me/MR.AYAN.2X";
+    const authorName = "𝗠𝗥.𝗔𝗬𝗔𝗡";
+    const authorFB = "https://m.me/NOOBS.DEVELOPER.AYAN";
     const authorInsta = "secret";
-    const status = "Pure single";
+    const status = "𝗣𝘂𝗿𝗲 𝗦𝗶𝗻𝗴𝗹𝗲";
 
     const urls = JSON.parse(fs.readFileSync('scripts/cmds/assets/info.json'));
     const link = urls[Math.floor(Math.random() * urls.length)];
