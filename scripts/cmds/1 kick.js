@@ -1,8 +1,8 @@
 module.exports = {
  config: {
- name: "kick1",
+ name: "kick",
  version: "1.0",
- author: "𝐀𝐒𝐈𝐅 𝐱𝟔𝟗",
+ author: "MR.AYAN",
  countDown: 5,
  role: 1,
  shortDescription: "no prefix kick",
