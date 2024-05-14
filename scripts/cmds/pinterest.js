@@ -3,14 +3,14 @@ const fs = require("fs-extra");
 const path = require("path");
 const request = require("request");
 /*Do not change
-        the credit 🐢👑🥴*/
+        the credit 🙂👍🏻*/
  
 module.exports = {
   config: {
     name: "pic",
-    aliases: ["pinterest"],
+    aliases: ["pinterest", "pin", "photo"],
     version: "1.0",
-    author: "𝐀𝐒𝐈𝐅 𝐱𝟔𝟗",
+    author: "𝐌𝐑.𝐀𝐘𝐀𝐍",
     role: 0,
     countDown: 20,
     longDescription: {
@@ -32,7 +32,7 @@ module.exports = {
     const keySearch = args.join(" ");
   const { spotify, pintarest } = require('nayan-server')
     if(keySearch.includes("-") == false) 
-      return message.reply("Please enter the search query and - number of images (1-50)", event.threadID, event.messageID)
+      return message.reply("𝗣𝗹𝗲𝗮𝘀𝗲 𝗲𝗻𝘁𝗲𝗿 𝘁𝗵𝗲 𝘀𝗲𝗮𝗿𝗰𝗵 𝗾𝘂𝗲𝗿𝘆 𝗮𝗻𝗱 - 𝗻𝘂𝗺𝗯𝗲𝗿 𝗼𝗳 𝗶𝗺𝗮𝗴𝗲𝘀 (1-50)", event.threadID, event.messageID)
     const keySearchs = keySearch.substr(0, keySearch.indexOf('-'))
     const numberSearch = keySearch.split("-").pop() || 6
     const res = await pintarest(`${encodeURIComponent(keySearchs)}`);
