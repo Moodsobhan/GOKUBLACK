@@ -3,8 +3,7 @@ const request = require("request");
 
 module.exports = {
 config: {
-    name: "infobox",
-    aliases: ['boxinfo'],
+    name: "boxinfo",
     version: "1.0",
     author: "MR.AYAN",//** original author fb I'd : https://m.me/NOOBS.DEVELOPER.AYAN **//
     countDown: 5,
