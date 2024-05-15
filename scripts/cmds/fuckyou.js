@@ -1,6 +1,6 @@
 module.exports = {
  config: {
-   name: "fuck",
+   name: "fuck you",
    version: "1.0",
    author: "MR.AYAN",
    countDown: 5,
@@ -12,7 +12,7 @@ module.exports = {
   
  onStart: async function(){}, 
  onChat: async function({ event, message, getLang }) {
- if (event.body && event.body.toLowerCase() === "fuck") {
+ if (event.body && event.body.toLowerCase() === "fuck you") {
  return message.reply({
  body: "Fuck you too😼",
  attachment: await global.utils.getStreamFromURL("https://i.postimg.cc/tJhkqJKH/2fa.gif")
