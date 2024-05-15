@@ -11,8 +11,8 @@ const exec = util.promisify(require('child_process').exec);
 module.exports = {
   config: {
     name: "botinfo",
-    aliases: ["botinfo", "infobot", "binfo", "ib"],
-    author: "𝐀𝐒𝐈𝐅 𝐱𝟔𝟗",
+    aliases: ["botinf", "infobot", "binfo"],
+    author: "MR.AYAN",
     version: "2.0",
     cooldowns: 0,
     role: 0,
@@ -90,7 +90,7 @@ module.exports = {
         await message.reply({
           body: `
 ━━━━━━━━━━━━━━━━━━━━━━━
-‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎📛 ∥ 𝗕𝗢𝗧 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡 ∥ 📛
+‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎🚀 ∥ 𝗕𝗢𝗧 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡 ∥ 🚀
 ━━━━━━━━━━━━━━━━━━━━━━━
 ☂ | 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄: ◊ ${Info.name} ◊
 ☂ | 𝐁𝐎𝐓 𝐏𝐑𝐄𝐅𝐈𝐗: ▷ ${Info.prefix} ◁
@@ -100,7 +100,7 @@ module.exports = {
 ☂ | 𝐓𝐎𝐓𝐀𝐋 𝐁𝐎𝐓 𝐂𝐌𝐃𝐒: ◊ ${commands.size} ◊
 ☂ | 𝐆𝐑𝐎𝐔𝐏 𝐍𝐀𝐌𝐄: ◊ ${Info.threadName} ◊
 ━━━━━━━━━━━━━━━━━━━━━━━
-‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎🔴 ∥ 𝗦𝗬𝗦𝗧𝗘𝗠 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡 ∥ 🔴
+‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎✨ ∥ 𝗦𝗬𝗦𝗧𝗘𝗠 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡 ∥ ✨
 ━━━━━━━━━━━━━━━━━━━━━━━
 ☂ | 𝐎𝐒: ◊ ${systemInfo.os} ◊
 ☂ | 𝐀𝐑𝐂𝐇: ◊ ${systemInfo.arch} ◊
@@ -112,7 +112,7 @@ module.exports = {
 ☂ | 𝐃𝐈𝐒𝐊 𝐒𝐏𝐀𝐂𝐄 𝐔𝐒𝐀𝐆𝐄: ◊ ${prettyBytes(diskUsage.used)} ∥ 𝐓𝐎𝐓𝐀𝐋: ${prettyBytes(diskUsage.total)} ◊
 
 ━━━━━━━━━━━━━━━━━━━━━━━
-‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎🔴⚪⚫ ∥ 𝐁𝐎𝐓 𝐎𝐖𝐍𝐄𝐑 ∥ ⚫⚪🔴 
+‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎✨✨✨ ∥ 𝐁𝐎𝐓 𝐎𝐖𝐍𝐄𝐑 ∥ ✨✨✨ 
 ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎◊ ${Info.author} ◊
 ━━━━━━━━━━━━━━━━━━━━━━━
             `,
