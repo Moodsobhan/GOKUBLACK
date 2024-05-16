@@ -12,8 +12,8 @@ module.exports = {
     config: {
         name: "waifudex",
         version: "1.0",
-        author: "Vex_kshitiz",//**original author MR.AYAN**//
-        role: 0,
+        author: "Vex_kshitiz",
+        role: 2,
         shortDescription: "Guess the waifu!",
         longDescription: "Guess the waifu! and add it into your waifu collection",
         category: "game",
