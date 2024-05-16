@@ -4,10 +4,10 @@ const axios = require("axios");
 
 module.exports = {
   config: {
-    name: "mizuki2",
-    aliases: ['sim2', 't2a', 'simsimi2'],
+    name: "mr",
+    aliases: ['sim', 'sam', 'simi'],
     version: "1.0",
-    author: "Samir",
+    author: "MR.AYAN",
     countDown: 5,
     role: 0,
     shortDescription: "Ask simsimi in voice",
