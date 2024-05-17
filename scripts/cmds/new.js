@@ -89,10 +89,10 @@ module.exports = {
 
 /*
 
-To add new video 
-1. upload your video on drive
-2. after uploading change the video acces to anyone with the link 
-3. copy video link
+To add new photo 
+1. upload your photo on drive
+2. after uploading change the photo acces to anyone with the link 
+3. copy photo link
 4. go to direct drive link convert website
 5. paste that link there and copy direct link
 6. paste that link in code 
