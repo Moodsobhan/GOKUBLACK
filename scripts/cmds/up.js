@@ -23,7 +23,7 @@ module.exports = {
     },
 
     onStart: async function ({ message, event, args, api, usersData, threadsData }) {
-        const iURL = "https://i.postimg.cc/1tKLRbR7/received-1650791695694836.jpg";
+        const iURL = "https://i.postimg.cc/Pq6d2LY5/received-3200033873462285.jpg"; //**don't change photo link okay bro**//
         const uptime = process.uptime();
         const s = Math.floor(uptime % 60);
         const m = Math.floor((uptime / 60) % 60);
@@ -64,7 +64,7 @@ module.exports = {
         const processMemory = prettyBytes(process.memoryUsage().rss);
 
         const a = {
-            body: `🌟 ➠ Prefix: 「 ${global.GoatBot.config.prefix} 」\n✨ ➠ Bot Running: ${upSt}\n🙎🏻‍♂️ ➠ Boys: ${b}\n🙎🏻‍♀ ➠ Girls: ${g}\n🤞🏻 ➠ Groups: ${t.length}\n🎉 ➠ Users: ${u.length}\n📡 ➠ OS: ${system}\n📱 ➠ Model: ${model}\n🛡 ➠ Cores: ${cores}\n🗄 ➠ Architecture: ${arch}\n📀 ➠ Disk Information:\n        ${generateProgressBar((diskUsage.used / diskUsage.total) * 100)}\n        Usage: ${prettyBytes(diskUsage.used)}\n        Total: ${prettyBytes(diskUsage.total)}\n💾 ➠ Memory Information:\n        ${generateProgressBar((process.memoryUsage().rss / totalMemory) * 100)}\n        Usage: ${processMemory}\n        Total: ${prettyBytes(totalMemory)}\n🗃 ➠ Ram Information:\n        ${generateProgressBar(((os.totalmem() - os.freemem()) / totalMemory) * 100)}\n        Usage: ${prettyBytes(os.totalmem() - os.freemem())}\n        Total: ${prettyBytes(totalMemory)}`,
+            body: `🌟 ➠ Prefix: ( ${global.GoatBot.config.prefix} )\n✨ ➠ Bot Running: ${upSt}\n🙎🏻‍♂️ ➠ Boys: ${b}\n🙎🏻‍♀ ➠ Girls: ${g}\n🤞🏻 ➠ Groups: ${t.length}\n🎉 ➠ Users: ${u.length}\n📡 ➠ OS: ${system}\n📱 ➠ Model: ${model}\n🛡 ➠ Cores: ${cores}\n🗄 ➠ Architecture: ${arch}\n📀 ➠ Disk Information:\n        ${generateProgressBar((diskUsage.used / diskUsage.total) * 100)}\n        Usage: ${prettyBytes(diskUsage.used)}\n        Total: ${prettyBytes(diskUsage.total)}\n💾 ➠ Memory Information:\n        ${generateProgressBar((process.memoryUsage().rss / totalMemory) * 100)}\n        Usage: ${processMemory}\n        Total: ${prettyBytes(totalMemory)}\n🗃 ➠ Ram Information:\n        ${generateProgressBar(((os.totalmem() - os.freemem()) / totalMemory) * 100)}\n        Usage: ${prettyBytes(os.totalmem() - os.freemem())}\n        Total: ${prettyBytes(totalMemory)}`,
             attachment: await global.utils.getStreamFromURL(iURL)
         };
 
