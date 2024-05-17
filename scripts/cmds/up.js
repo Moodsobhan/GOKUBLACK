@@ -7,7 +7,7 @@ module.exports = {
         name: "up",
         aliases: ["uptime", "upt"],
         version: "1.2",
-        author: "MR.AYAN",
+        author: "MR.AYAN",//**you needed my cmd but don't share this cmd***and original author fb I'd : https://m.me/NOOBS.DEVELOPER.AYAN **//
         countDown: 5,
         role: 2,
         shortDescription: {
@@ -23,7 +23,7 @@ module.exports = {
     },
 
     onStart: async function ({ message, event, args, api, usersData, threadsData }) {
-        const iURL = "https://i.imgur.com/cIShPnQ.jpeg";
+        const iURL = ["https://i.postimg.cc/qq2VVghn/received-430815183006013.jpg", "https://i.postimg.cc/1tKLRbR7/received-1650791695694836.jpg", "https://i.postimg.cc/MGZW70cL/received-435752262736007.jpg", "https://i.postimg.cc/Pq6d2LY5/received-3200033873462285.jpg", "https://i.postimg.cc/KzRxVZDr/received-455361183700405.jpg", "https://i.postimg.cc/8cvDpt37/images-17.jpg", "https://i.postimg.cc/kMSdtY14/received-970518934706409.jpg"];
         const uptime = process.uptime();
         const s = Math.floor(uptime % 60);
         const m = Math.floor((uptime / 60) % 60);
@@ -64,7 +64,7 @@ module.exports = {
         const processMemory = prettyBytes(process.memoryUsage().rss);
 
         const a = {
-            body: `🌟 | Prefix: 「 ${global.GoatBot.config.prefix} 」\n✨ | Bot Running: ${upSt}\n🙎🏻‍♂️ | Boys: ${b}\n🙎🏻‍♀ | Girls: ${g}\n🤞🏻 | Groups: ${t.length}\n🎉 | Users: ${u.length}\n📡 | OS: ${system}\n📱 | Model: ${model}\n🛡 | Cores: ${cores}\n🗄 | Architecture: ${arch}\n📀 | Disk Information:\n        ${generateProgressBar((diskUsage.used / diskUsage.total) * 100)}\n        Usage: ${prettyBytes(diskUsage.used)}\n        Total: ${prettyBytes(diskUsage.total)}\n💾 | Memory Information:\n        ${generateProgressBar((process.memoryUsage().rss / totalMemory) * 100)}\n        Usage: ${processMemory}\n        Total: ${prettyBytes(totalMemory)}\n🗃 | Ram Information:\n        ${generateProgressBar(((os.totalmem() - os.freemem()) / totalMemory) * 100)}\n        Usage: ${prettyBytes(os.totalmem() - os.freemem())}\n        Total: ${prettyBytes(totalMemory)}`,
+            body: `🌟 ➠ Prefix: 「 ${global.GoatBot.config.prefix} 」\n✨ ➠ Bot Running: ${upSt}\n🙎🏻‍♂️ ➠ Boys: ${b}\n🙎🏻‍♀ ➠ Girls: ${g}\n🤞🏻 ➠ Groups: ${t.length}\n🎉 ➠ Users: ${u.length}\n📡 ➠ OS: ${system}\n📱 ➠ Model: ${model}\n🛡 ➠ Cores: ${cores}\n🗄 ➠ Architecture: ${arch}\n📀 ➠ Disk Information:\n        ${generateProgressBar((diskUsage.used / diskUsage.total) * 100)}\n        Usage: ${prettyBytes(diskUsage.used)}\n        Total: ${prettyBytes(diskUsage.total)}\n💾 ➠ Memory Information:\n        ${generateProgressBar((process.memoryUsage().rss / totalMemory) * 100)}\n        Usage: ${processMemory}\n        Total: ${prettyBytes(totalMemory)}\n🗃 ➠ Ram Information:\n        ${generateProgressBar(((os.totalmem() - os.freemem()) / totalMemory) * 100)}\n        Usage: ${prettyBytes(os.totalmem() - os.freemem())}\n        Total: ${prettyBytes(totalMemory)}`,
             attachment: await global.utils.getStreamFromURL(iURL)
         };
 
@@ -95,4 +95,4 @@ function generateProgressBar(percentage) {
     const progressBar = `[${'█'.repeat(filledSections)}${'▒'.repeat(totalSections - filledSections)}]`;
 
     return progressBar;
-} 
+}
