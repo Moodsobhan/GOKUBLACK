@@ -12,7 +12,7 @@ module.exports = {
   config: {
     name: "tiktok",
     aliases: [],
-    author: "kshitiz",
+    author: "MR.AYAN",
     version: "1.0",
     shortDescription: {
       en: "Play TikTok video by number",
