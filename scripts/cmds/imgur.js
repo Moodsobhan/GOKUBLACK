@@ -3,6 +3,7 @@ const axios = require('axios');
 module.exports = {
   config: {
     name: "imgur",
+    aliases: ["link"],
     version: "1.0",
     author: "MR.AYAN",
     countDown: 1,
@@ -19,7 +20,7 @@ module.exports = {
     const puti = event.messageReply?.attachments[0]?.url;
 
     if (!puti) {
-      return message.reply('Please reply to an image.');
+      return message.reply('🌟 Please reply to an image');
     }
 
     try {
@@ -28,7 +29,7 @@ module.exports = {
       return message.reply(lado);
     } catch (error) {
       console.error(error);
-      return message.reply('api sucks bro.');
+      return message.reply('Error🤣👍🏻');
     }
   }
-}; 
+};
