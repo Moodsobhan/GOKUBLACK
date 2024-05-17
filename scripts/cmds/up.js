@@ -30,7 +30,7 @@ module.exports = {
             "https://i.postimg.cc/Pq6d2LY5/received-3200033873462285.jpg",
             "https://i.postimg.cc/KzRxVZDr/received-455361183700405.jpg",
             "https://i.postimg.cc/8cvDpt37/images-17.jpg",
-            "https://i.postimg.cc/kMSdtY14/received-970518934706409.jpg",
+            "https://i.postimg.cc/kMSdtY14/received-970518934706409.jpg"
         ];
         const uptime = process.uptime();
         const s = Math.floor(uptime % 60);
