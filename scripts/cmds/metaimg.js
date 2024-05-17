@@ -1,52 +1,35 @@
 const axios = require('axios');
 const fs = require('fs-extra');
-const path = require('path');
-
-module.exports = {
-  config: {
-    name: "metaimg",
-    aliases: ["meta","metaai"],
-    version: "1.0",
-    author: "JARiF",
+module.exports={
+config:{
+  name: "meta",
+    aliases: ["img5"],
+    version: "6.9.0",
+    author: "MR.AYAN",//** original MR.AYAN this is author fb I'd : https://m.me/NOOBS.DEVELOPER.AYAN but api dipto **//
     countDown: 15,
     role: 0,
-    shortDescription: "Generate images by Meta AI",
-    longDescription: "Generate images by Meta AI",
-    category: "download",
+    shortDescription: "photo genarate",
+    longDescription: "Photo genarate from meta ai",
+    category: "imagination",
     guide: {
-      en: "{pn} prompt"
+      en: "{pn} [prompt]"
     }
-  },
-
-  onStart: async function ({ api, event, message, args }) {
-    try {
-      const p = args.join(" ");
-
-      const waitingMessage = await message.reply("Please wait...");
-
-
-      const url = `https://api.vyturex.com/meta?prompt=${p}`;
-  
-      const response = await axios.get(url);
-      const data = response.data;
-      const imgData = [];
-
-        for (let i = 0; i < data.length; i++) {
-          const imgUrl = data[i];
-          const imgResponse = await axios.get(imgUrl, { responseType: 'arraybuffer' });
-          const imgPath = path.join(__dirname, 'cache', `${i + 1}.jpg`);
-          await fs.outputFile(imgPath, imgResponse.data);
-          imgData.push(fs.createReadStream(imgPath));
-        }
-        
-      await message.reply({
-        body: `✅ | Generated`,
-        attachment: imgData
-      });
-
-    } catch (error) {
-      console.error(error);
-      return message.reply(`Redirect failed!\n.${error}`);
-    }
-  }
+},
+onStart:async function ({ args, event, api }) {
+  try {
+    const apiUrl = "http://noobs-api.onrender.com";
+    const prompt = args.join(" ");
+    const wait = await api.sendMessage("Please wait xans <😽", event.threadID);
+    const response = await axios.get(`${apiUrl}/dipto/meta?prompt=${encodeURIComponent(prompt)}&key=dipto008`);
+    const data = response.data.imgUrls;
+     await api.unsendMessage(wait.messageID);
+    await api.sendMessage({
+      body: `✅ | Generated your images`,
+      attachment: await global.utils.getStreamFromURL(data)
+    }, event.threadID ,event.messageID);
+  } catch (e) {
+    console.error(e);
+    await api.sendMessage(`Failed to genarate photo!!!!\rror: ${e.message}`, event.threadID);
+   }
+ }
 };
