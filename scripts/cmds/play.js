@@ -1,92 +1,88 @@
-module.exports = {
-  config: {
-    name: "play",
-    version: "1.0",
-    role: 0,
-    author: "KSHITIZ",
-    cooldowns: 5,
-    shortdescription: "play song with lyrics",//use offical music name 
-    longdescription: "always use official music title for lyrics",
-    category: "music",
-    usages: "{pn} play (song name)",
-    dependencies: {
-      "fs-extra": "",
-      "request": "",
-      "axios": "",
-      "ytdl-core": "",
-      "yt-search": ""
-    }
-  },
+const axios = require("axios");
+const fs = require('fs-extra');
+const path = require('path');
+const ytdl = require("ytdl-core");
+const yts = require("yt-search");
 
-  onStart: async ({ api, event }) => {
-    const axios = require("axios");
-    const fs = require("fs-extra");
-    const ytdl = require("ytdl-core");
-    const request = require("request");
-    const yts = require("yt-search");
-
-    const input = event.body;
-    const text = input.substring(12);
-    const data = input.split(" ");
-
-    if (data.length < 2) {
-      return api.sendMessage("Please write music name", event.threadID);
-    }
-
-    data.shift();
-    const song = data.join(" ");
-
+async function sing(api, event, args, message) {
+    api.setMessageReaction("☢️", event.messageID, (err) => {}, true);
     try {
-      api.sendMessage(`🕵️‍♂️ | Searching Lyrics and Music for "${song}".\n⏳ | Please wait...🤍`, event.threadID);
+        let title = '';
 
-      const res = await axios.get(`https://api.popcat.xyz/lyrics?song=${encodeURIComponent(song)}`);
-      const lyrics = res.data.lyrics || "Not found!";
-      const title = res.data.title || "Not found!";
-      const artist = res.data.artist || "Not found!";
-
-      const searchResults = await yts(song);
-      if (!searchResults.videos.length) {
-        return api.sendMessage("Error: Invalid request.", event.threadID, event.messageID);
-      }
-
-      const video = searchResults.videos[0];
-      const videoUrl = video.url;
-
-      const stream = ytdl(videoUrl, { filter: "audioonly" });
-
-      const fileName = `${event.senderID}.mp3`;
-      const filePath = __dirname + `/cache/${fileName}`;
-
-      stream.pipe(fs.createWriteStream(filePath));
-
-      stream.on('response', () => {
-        console.info('[DOWNLOADER]', 'Starting download now!');
-      });
-
-      stream.on('info', (info) => {
-        console.info('[DOWNLOADER]', `Downloading ${info.videoDetails.title} by ${info.videoDetails.author.name}`);
-      });
-
-      stream.on('end', () => {
-        console.info('[DOWNLOADER] Downloaded');
-
-        if (fs.statSync(filePath).size > 26214400) {
-          fs.unlinkSync(filePath);
-          return api.sendMessage('[ERR] The file could not be sent because it is larger than 25MB.', event.threadID);
-        }
-
-        const message = {
-          body: `❏Title: ${title}\n❏Artist: ${artist}\n\n❏Lyrics: ${lyrics}`,
-          attachment: fs.createReadStream(filePath)
+        const extractShortUrl = async () => {
+            const attachment = event.messageReply.attachments[0];
+            if (attachment.type === "video" || attachment.type === "audio") {
+                return attachment.url;
+            } else {
+                throw new Error("Invalid attachment type.");
+            }
         };
 
-        api.sendMessage(message, event.threadID, () => {
-          fs.unlinkSync(filePath);
+        if (event.messageReply && event.messageReply.attachments && event.messageReply.attachments.length > 0) {
+            const shortUrl = await extractShortUrl();
+            const musicRecognitionResponse = await axios.get(`https://audio-reco.onrender.com/kshitiz?url=${encodeURIComponent(shortUrl)}`);
+            title = musicRecognitionResponse.data.title;
+        } else if (args.length === 0) {
+            message.reply("Please provide a lyrics name");
+            return;
+        } else {
+            title = args.join(" ");
+        }
+
+        const searchResults = await yts(title);
+        if (!searchResults.videos.length) {
+            message.reply("No song and lyrics found for the given query.");
+            return;
+        }
+
+        const videoUrl = searchResults.videos[0].url;
+        const stream = ytdl(videoUrl, { filter: "audioonly" });
+
+        const fileName = `lado.mp3`;
+        const filePath = path.join(__dirname, "cache", fileName);
+        const writer = fs.createWriteStream(filePath);
+
+        stream.pipe(writer);
+
+        writer.on('finish', async () => {
+            const audioStream = fs.createReadStream(filePath);
+
+           
+            const lyricsResponse = await axios.get(`https://lyrist.vercel.app/api/${encodeURIComponent(title)}`);
+            const { lyrics } = lyricsResponse.data;
+
+          
+            const messageBody = `✨ Playing: ${title}\n\n${lyrics}`;
+
+            
+            message.reply({ body: messageBody, attachment: audioStream });
+
+            api.setMessageReaction("✨", event.messageID, () => {}, true);
         });
-      });
+
+        writer.on('error', (error) => {
+            console.error("Error:", error);
+            message.reply("Error occurred while processing the song.");
+        });
     } catch (error) {
-      console.error('[ERROR]', error);
-      api.sendMessage('try again later > error.', event.threadID);
+        console.error("Error:", error);
+        message.reply("Error occurred while processing the song.");
     }
-  }
-};
+}
+
+module.exports = {
+    config: {
+        name: "play",
+        version: "1.0",
+        author: "MR.AYAN",
+        countDown: 10,
+        role: 0,
+        shortDescription: "play music withs its lyrics",
+        longDescription: "play music witg it lyrics.",
+        category: "music",
+        guide: "{p] play lyricsName"
+    },
+    onStart: function ({ api, event, args, message }) {
+        return sing(api, event, args, message);
+    }
+}; 
