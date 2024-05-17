@@ -23,12 +23,12 @@ module.exports = {
     },
 
     onStart: async function ({ message, event, args, api, usersData, threadsData }) {
-        const iURL = "https://i.postimg.cc/qq2VVghn/received-430815183006013.jpg"; //**don't change photo link okay bro**//
+        const iURL = "https://i.imgur.com/c2ESrRy.jpeg"; //**photo link to fixed don't change photo link okay bro**//
         const uptime = process.uptime();
         const s = Math.floor(uptime % 60);
         const m = Math.floor((uptime / 60) % 60);
         const h = Math.floor((uptime / (60 * 60)) % 24);
-        const upSt = `${h}Hrs ${m}Min ${s}Sec`;
+        const upSt = `${h} Hour ${m} minute ${s} second`;
 
         let threadInfo = await api.getThreadInfo(event.threadID);
 
