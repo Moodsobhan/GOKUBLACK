@@ -9,7 +9,7 @@ module.exports = {
         version: "1.2",
         author: "MR.AYAN",//**you needed my cmd but don't share this cmd***and original author fb I'd : https://m.me/NOOBS.DEVELOPER.AYAN **//
         countDown: 5,
-        role: 2,
+        role: 0,
         shortDescription: {
             en: ""
         },
