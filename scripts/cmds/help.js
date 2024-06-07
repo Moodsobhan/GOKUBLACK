@@ -3,7 +3,7 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "[ 🌟 | 𝗔𝗬𝗔𝗡-𝗕𝗢𝗧 ]";
+const doNotDelete = "[ 🌟 | 𝗚𝗢𝗞𝗨-𝗕𝗟𝗔𝗖𝗞 ]";
 
 module.exports = {
   config: {
@@ -34,7 +34,7 @@ module.exports = {
       const categories = {};
       let msg = "";
 
-      msg += `╔═══════════╗\n     𝗔𝗬𝗔𝗡-𝗕𝗢𝗧🌟\n╚═══════════╝`;
+      msg += `╔═══════════╗\n     𝗚𝗢𝗞𝗨-𝗕𝗟𝗔𝗖𝗞🌟\n╚═══════════╝`;
 
       for (const [name, value] of commands) {
           if (value.config.role > 1 && role < value.config.role) continue;
@@ -60,16 +60,16 @@ module.exports = {
 
       const totalCommands = commands.size;
       msg += `\n𝗖𝘂𝗿𝗿𝗲𝗻𝘁𝗹𝘆, 𝘁𝗵𝗲 𝗯𝗼𝘁 𝗵𝗮𝘀 ${totalCommands} 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀 𝘁𝗵𝗮𝘁 𝗰𝗮𝗻 𝗯𝗲 𝘂𝘀𝗲𝗱\n`;
-      msg += `𝗧𝘆𝗽𝗲 ${prefix}𝗵𝗲𝗹𝗽 [𝗔𝗬𝗔𝗡-𝗕𝗢𝗧] 𝘁𝗼 𝘃𝗶𝗲𝘄 𝘁𝗵𝗲 𝗱𝗲𝘁𝗮𝗶𝗹𝘀 𝗼𝗳 𝘁𝗵𝗮𝘁 𝗰𝗼𝗺𝗺𝗮𝗻𝗱\n`;
-      msg += `🌟 | 𝗔𝗬𝗔𝗡-𝗕𝗢𝗧 `;
+      msg += `𝗧𝘆𝗽𝗲 ${prefix}𝗵𝗲𝗹𝗽 [𝗚𝗢𝗞𝗨-/𝗕𝗟𝗔𝗖𝗞] 𝘁𝗼 𝘃𝗶𝗲𝘄 𝘁𝗵𝗲 𝗱𝗲𝘁𝗮𝗶𝗹𝘀 𝗼𝗳 𝘁𝗵𝗮𝘁 𝗰𝗼𝗺𝗺𝗮𝗻𝗱\n`;
+      msg += `🌟 | 𝗚𝗢𝗞𝗨-𝗕𝗟𝗔𝗖𝗞 `;
 
 
       const helpListImages = [
-        "https://i.postimg.cc/8cvDpt37/images-17.jpg", // add image link here
-        "https://i.postimg.cc/qq2VVghn/received-430815183006013.jpg",
-        "https://i.postimg.cc/KzRxVZDr/received-455361183700405.jpg",
-        "https://i.postimg.cc/MGZW70cL/received-435752262736007.jpg",
-        "https://i.postimg.cc/Pq6d2LY5/received-3200033873462285.jpg",
+        "https://i.postimg.cc/9FQCBFSB/f10c9b7b0eabc3067ebbc700e5f3e4b1.jpg", // add image link here
+        "https://i.postimg.cc/sXWqcb9y/b33292e270f53f1d49ac29c2361ca559.jpg",
+        "https://i.postimg.cc/NGp7npJw/c8a5f878e8c7e467b5e88a921fa1cd22.jpg",
+        "https://i.postimg.cc/0jnsYLPj/c1cec1609f6bb272fa85b19aa4182475.jpg",
+        "https://i.postimg.cc/0jnsYLPj/c1cec1609f6bb272fa85b19aa4182475.jpg",
         // Add more image links as needed
       ];
 
@@ -113,7 +113,7 @@ module.exports = {
    ➢ 𝙐𝙎𝘼𝙂𝙀
      ➠ ${usage}
    ➢ 𝙉𝙊𝙏𝙀𝙎
-    scripts coding by MR.AYAN
+    scripts coding by MR.RAFI
   ━━━━━━━━━━━━━━━━━━ꔪ`;
 
         await message.reply(response);
