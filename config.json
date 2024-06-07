@@ -1,7 +1,7 @@
 {
   "facebookAccount": {
-    "email": "",
-    "password": "",
+    "email": "ytpremium0841@gmail.com",
+    "password": "Aa456789",
     "2FASecret": "",
     "i_user": "",
     "proxy": null,
@@ -17,8 +17,8 @@
     "ignoreCommand": []
   },
   "adminBot": [
-    "61551774501334",
-    "",
+    "61560170243143",
+    "61557169379945",
     ""
   ],
   "whiteListMode": {
@@ -26,11 +26,11 @@
     "whiteListIds": [],
     "notes": "if you enable this feature, only the ids in the whiteListIds section can use the bot"
   },
-  "authorName": "MR.AYAN",
-  "AGE": "18",
+  "authorName": "RAFI",
+  "AGE": "16",
   "GENDER": "MALE",
-  "nickNameBot": "♡︎𝗠𝗜𝗥𝗔 𝗞𝗜𝗠 𝗥𝗢𝗕𝗢𝗧♡︎",
-  "authorFB": "https://m.me/NOOBS.DEVELOPER.AYAN",
+  "nickNameBot": "♡︎ 𝗚𝗢𝗞𝗨 𝗕𝗟𝗔𝗖𝗞 ♡︎",
+  "authorFB": "https://www.facebook.com/profile.php?id=61560170243143",
   "prefix": ".",
   "database": {
     "type": "sqlite",
